@@ -1,0 +1,179 @@
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Space+Grotesk%3Awght%40400%3B500%3B700"
+    />
+
+    <title>Stitch Design</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div
+      class="relative flex size-full min-h-screen flex-col bg-white justify-between group/design-root overflow-x-hidden"
+      style='font-family: "Space Grotesk", "Noto Sans", sans-serif;'
+    >
+      <div>
+        <div class="flex items-center bg-white p-4 pb-2 justify-between">
+          <h2 class="text-[#111714] text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pl-12">Profile</h2>
+          <div class="flex w-12 items-center justify-end">
+            <button
+              class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 bg-transparent text-[#111714] gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0"
+            >
+              <div class="text-[#111714]" data-icon="Gear" data-size="24px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                  <path
+                    d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Zm88-29.84q.06-2.16,0-4.32l14.92-18.64a8,8,0,0,0,1.48-7.06,107.21,107.21,0,0,0-10.88-26.25,8,8,0,0,0-6-3.93l-23.72-2.64q-1.48-1.56-3-3L186,40.54a8,8,0,0,0-3.94-6,107.71,107.71,0,0,0-26.25-10.87,8,8,0,0,0-7.06,1.49L130.16,40Q128,40,125.84,40L107.2,25.11a8,8,0,0,0-7.06-1.48A107.6,107.6,0,0,0,73.89,34.51a8,8,0,0,0-3.93,6L67.32,64.27q-1.56,1.49-3,3L40.54,70a8,8,0,0,0-6,3.94,107.71,107.71,0,0,0-10.87,26.25,8,8,0,0,0,1.49,7.06L40,125.84Q40,128,40,130.16L25.11,148.8a8,8,0,0,0-1.48,7.06,107.21,107.21,0,0,0,10.88,26.25,8,8,0,0,0,6,3.93l23.72,2.64q1.49,1.56,3,3L70,215.46a8,8,0,0,0,3.94,6,107.71,107.71,0,0,0,26.25,10.87,8,8,0,0,0,7.06-1.49L125.84,216q2.16.06,4.32,0l18.64,14.92a8,8,0,0,0,7.06,1.48,107.21,107.21,0,0,0,26.25-10.88,8,8,0,0,0,3.93-6l2.64-23.72q1.56-1.48,3-3L215.46,186a8,8,0,0,0,6-3.94,107.71,107.71,0,0,0,10.87-26.25,8,8,0,0,0-1.49-7.06Zm-16.1-6.5a73.93,73.93,0,0,1,0,8.68,8,8,0,0,0,1.74,5.48l14.19,17.73a91.57,91.57,0,0,1-6.23,15L187,173.11a8,8,0,0,0-5.1,2.64,74.11,74.11,0,0,1-6.14,6.14,8,8,0,0,0-2.64,5.1l-2.51,22.58a91.32,91.32,0,0,1-15,6.23l-17.74-14.19a8,8,0,0,0-5-1.75h-.48a73.93,73.93,0,0,1-8.68,0,8,8,0,0,0-5.48,1.74L100.45,215.8a91.57,91.57,0,0,1-15-6.23L82.89,187a8,8,0,0,0-2.64-5.1,74.11,74.11,0,0,1-6.14-6.14,8,8,0,0,0-5.1-2.64L46.43,170.6a91.32,91.32,0,0,1-6.23-15l14.19-17.74a8,8,0,0,0,1.74-5.48,73.93,73.93,0,0,1,0-8.68,8,8,0,0,0-1.74-5.48L40.2,100.45a91.57,91.57,0,0,1,6.23-15L69,82.89a8,8,0,0,0,5.1-2.64,74.11,74.11,0,0,1,6.14-6.14A8,8,0,0,0,82.89,69L85.4,46.43a91.32,91.32,0,0,1,15-6.23l17.74,14.19a8,8,0,0,0,5.48,1.74,73.93,73.93,0,0,1,8.68,0,8,8,0,0,0,5.48-1.74L155.55,40.2a91.57,91.57,0,0,1,15,6.23L173.11,69a8,8,0,0,0,2.64,5.1,74.11,74.11,0,0,1,6.14,6.14,8,8,0,0,0,5.1,2.64l22.58,2.51a91.32,91.32,0,0,1,6.23,15l-14.19,17.74A8,8,0,0,0,199.87,123.66Z"
+                  ></path>
+                </svg>
+              </div>
+            </button>
+          </div>
+        </div>
+        <div class="flex p-4 @container">
+          <div class="flex w-full flex-col gap-4 items-center">
+            <div class="flex gap-4 flex-col items-center">
+              <div
+                class="bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-32 w-32"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAr7hRkL8Q9--yEnZPnir_5ZwQT5kM4bcAAOYYLHO1QlfmnLXYRZMlajuDzGVzx5hNp_JTSfRQD_nkguFHSK-PcV6STMkd_2AXpYGZ4vBVKFdx4ly8rX5Hy_Q-LdCnKgrBDYW5CI0h3cCMfzrcpdmKbGHDpurR0aeHoMR2pJSe1UkffgwuNdo6dbeq68_aHSnIZDO-cudR5g9ORTTUE2L9bU9bKRw8q2CG_1xpedRMH8fKAL8kJ3GtvrqKtxeY9X39EE99D6r-Lr3b3");'
+              ></div>
+              <div class="flex flex-col items-center justify-center justify-center">
+                <p class="text-[#111714] text-[22px] font-bold leading-tight tracking-[-0.015em] text-center">Sophia Kim</p>
+                <p class="text-[#648772] text-base font-normal leading-normal text-center">@sophiak</p>
+                <p class="text-[#648772] text-base font-normal leading-normal text-center">Avid hiker and nature enthusiast</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-3 px-4 py-3">
+          <div class="flex min-w-[111px] flex-1 basis-[fit-content] flex-col gap-2 rounded-lg border border-[#dce5df] p-3 items-center text-center">
+            <p class="text-[#111714] tracking-light text-2xl font-bold leading-tight">120</p>
+            <div class="flex items-center gap-2"><p class="text-[#648772] text-sm font-normal leading-normal">Hikes</p></div>
+          </div>
+          <div class="flex min-w-[111px] flex-1 basis-[fit-content] flex-col gap-2 rounded-lg border border-[#dce5df] p-3 items-center text-center">
+            <p class="text-[#111714] tracking-light text-2xl font-bold leading-tight">850km</p>
+            <div class="flex items-center gap-2"><p class="text-[#648772] text-sm font-normal leading-normal">Distance</p></div>
+          </div>
+          <div class="flex min-w-[111px] flex-1 basis-[fit-content] flex-col gap-2 rounded-lg border border-[#dce5df] p-3 items-center text-center">
+            <p class="text-[#111714] tracking-light text-2xl font-bold leading-tight">30</p>
+            <div class="flex items-center gap-2"><p class="text-[#648772] text-sm font-normal leading-normal">Trails</p></div>
+          </div>
+        </div>
+        <h2 class="text-[#111714] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Recent Activity</h2>
+        <div class="flex overflow-y-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden">
+          <div class="flex items-stretch p-4 gap-3">
+            <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-40">
+              <div
+                class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl flex flex-col"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC7_X1aNoMncH2sZKGAMGs07VVe9RIxXrva7um9r_Mau5iVCAnJeM15w_Uk_fhkLicoW0b9_mmYI0cECKRA-EoL5tMEv8jdxENg2CZbgLOoKp-GvmjvUNBUdSq0y0-5p6Ukp6bKgJgw95rFDTGq-eFQfJOmA4YgAyAeUOKxu2sGfxF-MEJEn2IPxOLcxXJnuQadWH3f2lI8xbet5k2OlT4x0UxoBysUh1wmbmhY6EoOXWToA5sTk_jNa_NxYe5RapW2dlu3GhWU1ypv");'
+              ></div>
+              <div>
+                <p class="text-[#111714] text-base font-medium leading-normal">Mount Rainier</p>
+                <p class="text-[#648772] text-sm font-normal leading-normal">July 15, 2024</p>
+              </div>
+            </div>
+            <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-40">
+              <div
+                class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl flex flex-col"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBQkoM6Z3dZZr7OKchb4UK3SUoqBevqr7gTKl7zGuYKh980FKdANNTyYyDeETuNARRzDI6Of4-z4ZnGhI5bfMFHrmgTKdk60MJ4zjxlbVtIK2ZXyIca4WT5KGBFG6jrIFaoEBMQ425vZEMn5KpMNyxghYBT-m6hdJ2hQFGqXEDKJawQniEeYSsJNQE0MdBRcdyAHXdyJYJRDHzBrsBE_3C5Dl9-bzzYU928HGvEqe2BLy_r-APiyOUX7bcOfr4yv3ScgyJ9c_0Teco9");'
+              ></div>
+              <div>
+                <p class="text-[#111714] text-base font-medium leading-normal">Yosemite Valley Trail</p>
+                <p class="text-[#648772] text-sm font-normal leading-normal">June 22, 2024</p>
+              </div>
+            </div>
+            <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-40">
+              <div
+                class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl flex flex-col"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCVUHN-Ag_HS9A-RwP0O8KUbQZ7nRD7XHIUc8NZMGGDp1w_YysjcyOM91SVFq2Xb2NqoNmKkHPQHVVdO_7NFA9zLnMifrdPFOx4jhz5RkKhhk2XNY5uXez6X3SwiQGXFJeKoAAznAPLs-HD4jrA9WcFwX7MTgjDagp53TlPCNJTWKYvVXl7B2bvviiAsxi6GRGXCIPzLsiSb0q-CXjpraK5Hn5tJLNOWaD-NQ4O0D3UEWjgrRuFE2DkrMCLQBA3UcHgWyoSCkvc_nDo");'
+              ></div>
+              <div>
+                <p class="text-[#111714] text-base font-medium leading-normal">Grand Teton Summit</p>
+                <p class="text-[#648772] text-sm font-normal leading-normal">May 10, 2024</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h2 class="text-[#111714] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Favorite Trails</h2>
+        <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2">
+          <div
+            class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-14"
+            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDOtnGbde51GcSnxiEjLsbaa5A0dsWxct7aTKytt-yBjKFKK1Mi5E_QmmcuTM8zjRQPx_Fi5eWQCznpCFn6jhqYv0bkdBhcX2d2aAzIN68ZCFUXyFZsABYSm0iMiPD6f1XqDj9Js_7R-lG_Ik3612YzWcm3cv4quQumpLqPKopbmHXzAVIV6uMWAEyB0TZ2G-NMJJ0xdhTY5g6yu0lmfLVeKkCBDM3E1U9y9Hv9umHuQ7lnFAlJt75hweVIxQ_JHcNUj6YoiMngsVW1");'
+          ></div>
+          <div class="flex flex-col justify-center">
+            <p class="text-[#111714] text-base font-medium leading-normal line-clamp-1">Angels Landing Trail</p>
+            <p class="text-[#648772] text-sm font-normal leading-normal line-clamp-2">Moderate · 10km</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2">
+          <div
+            class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-14"
+            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAsdstf_f9OgjV1NaBP0gREReLp_7d7gfxiCxbxMyyewiLVlt9XLS_mgZD_WyDGics0OhWOO8xWw8gKuhEEBXKl4xX3F4vKCkbSII2a0yFvaYQYAr9Aou-6_z61srhJIPauDW1AziVk1JfJwYAOS7EOxuNz86q-tbjPBsKf1ki3XcZp_KXMZ2KeLPO-6VVVMl6FG__mD99NVmxCuMQ_7win_KhEuUHwAO1myqdkyghwNRUTMbDrHLwOF-iYV18g6lDnA6_ZIGoLgECo");'
+          ></div>
+          <div class="flex flex-col justify-center">
+            <p class="text-[#111714] text-base font-medium leading-normal line-clamp-1">Half Dome Hike</p>
+            <p class="text-[#648772] text-sm font-normal leading-normal line-clamp-2">Difficult · 15km</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2">
+          <div
+            class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-14"
+            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA0fX5C8409QlOWQpbZyrkmW8sq3t_v3pMrSApm6usJI_Rb-X_skDxZcq5VIJWcrddGkcBrMkGukGViKDG2jdd36lML5yLe3j9WUD35IXhyv9838MChLyA_KbeV--H8B-NOKs5I-PCcF6Utl39emvzN50orQ8mXTCZuIPeuv3GkK4V5y4nIwP7vCf8xA12qfo7lUapq21v5aGXEhBsYaAPTsDnR6zgYPLGo6iMz4wmK9XhDHwqWegoqDOx09PEbS-0-7hWdp23vjzcv");'
+          ></div>
+          <div class="flex flex-col justify-center">
+            <p class="text-[#111714] text-base font-medium leading-normal line-clamp-1">Mist Trail</p>
+            <p class="text-[#648772] text-sm font-normal leading-normal line-clamp-2">Easy · 5km</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="flex gap-2 border-t border-[#f0f4f2] bg-white px-4 pb-3 pt-2">
+          <a class="just flex flex-1 flex-col items-center justify-end gap-1 text-[#648772]" href="#">
+            <div class="text-[#648772] flex h-8 items-center justify-center" data-icon="House" data-size="24px" data-weight="regular">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                <path
+                  d="M218.83,103.77l-80-75.48a1.14,1.14,0,0,1-.11-.11,16,16,0,0,0-21.53,0l-.11.11L37.17,103.77A16,16,0,0,0,32,115.55V208a16,16,0,0,0,16,16H96a16,16,0,0,0,16-16V160h32v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V115.55A16,16,0,0,0,218.83,103.77ZM208,208H160V160a16,16,0,0,0-16-16H112a16,16,0,0,0-16,16v48H48V115.55l.11-.1L128,40l79.9,75.43.11.1Z"
+                ></path>
+              </svg>
+            </div>
+            <p class="text-[#648772] text-xs font-medium leading-normal tracking-[0.015em]">Home</p>
+          </a>
+          <a class="just flex flex-1 flex-col items-center justify-end gap-1 text-[#648772]" href="#">
+            <div class="text-[#648772] flex h-8 items-center justify-center" data-icon="MagnifyingGlass" data-size="24px" data-weight="regular">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+              </svg>
+            </div>
+            <p class="text-[#648772] text-xs font-medium leading-normal tracking-[0.015em]">Explore</p>
+          </a>
+          <a class="just flex flex-1 flex-col items-center justify-end gap-1 text-[#648772]" href="#">
+            <div class="text-[#648772] flex h-8 items-center justify-center" data-icon="MapTrifold" data-size="24px" data-weight="regular">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                <path
+                  d="M228.92,49.69a8,8,0,0,0-6.86-1.45L160.93,63.52,99.58,32.84a8,8,0,0,0-5.52-.6l-64,16A8,8,0,0,0,24,56V200a8,8,0,0,0,9.94,7.76l61.13-15.28,61.35,30.68A8.15,8.15,0,0,0,160,224a8,8,0,0,0,1.94-.24l64-16A8,8,0,0,0,232,200V56A8,8,0,0,0,228.92,49.69ZM104,52.94l48,24V203.06l-48-24ZM40,62.25l48-12v127.5l-48,12Zm176,131.5-48,12V78.25l48-12Z"
+                ></path>
+              </svg>
+            </div>
+            <p class="text-[#648772] text-xs font-medium leading-normal tracking-[0.015em]">Record</p>
+          </a>
+          <a class="just flex flex-1 flex-col items-center justify-end gap-1 rounded-full text-[#111714]" href="#">
+            <div class="text-[#111714] flex h-8 items-center justify-center" data-icon="User" data-size="24px" data-weight="fill">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                <path
+                  d="M230.93,220a8,8,0,0,1-6.93,4H32a8,8,0,0,1-6.92-12c15.23-26.33,38.7-45.21,66.09-54.16a72,72,0,1,1,73.66,0c27.39,8.95,50.86,27.83,66.09,54.16A8,8,0,0,1,230.93,220Z"
+                ></path>
+              </svg>
+            </div>
+            <p class="text-[#111714] text-xs font-medium leading-normal tracking-[0.015em]">Profile</p>
+          </a>
+        </div>
+        <div class="h-5 bg-white"></div>
+      </div>
+    </div>
+  </body>
+</html>

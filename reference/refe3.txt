@@ -1,0 +1,123 @@
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Space+Grotesk%3Awght%40400%3B500%3B700"
+    />
+
+    <title>Stitch Design</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div
+      class="relative flex size-full min-h-screen flex-col bg-white justify-between group/design-root overflow-x-hidden"
+      style='font-family: "Space Grotesk", "Noto Sans", sans-serif;'
+    >
+      <div>
+        <div class="flex items-center bg-white p-4 pb-2 justify-between">
+          <div class="text-[#121714] flex size-12 shrink-0 items-center" data-icon="ArrowLeft" data-size="24px" data-weight="regular">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+              <path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"></path>
+            </svg>
+          </div>
+          <h2 class="text-[#121714] text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">Community</h2>
+        </div>
+        <div class="px-4 py-3">
+          <label class="flex flex-col min-w-40 h-12 w-full">
+            <div class="flex w-full flex-1 items-stretch rounded-xl h-full">
+              <div
+                class="text-[#688273] flex border-none bg-[#f1f4f2] items-center justify-center pl-4 rounded-l-xl border-r-0"
+                data-icon="MagnifyingGlass"
+                data-size="24px"
+                data-weight="regular"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+                </svg>
+              </div>
+              <input
+                placeholder="Search posts"
+                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#121714] focus:outline-0 focus:ring-0 border-none bg-[#f1f4f2] focus:border-none h-full placeholder:text-[#688273] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal"
+                value=""
+              />
+            </div>
+          </label>
+        </div>
+        <div class="pb-3">
+          <div class="flex border-b border-[#dde4e0] px-4 gap-8">
+            <a class="flex flex-col items-center justify-center border-b-[3px] border-b-[#121714] text-[#121714] pb-[13px] pt-4" href="#">
+              <p class="text-[#121714] text-sm font-bold leading-normal tracking-[0.015em]">All</p>
+            </a>
+            <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#688273] pb-[13px] pt-4" href="#">
+              <p class="text-[#688273] text-sm font-bold leading-normal tracking-[0.015em]">Following</p>
+            </a>
+            <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#688273] pb-[13px] pt-4" href="#">
+              <p class="text-[#688273] text-sm font-bold leading-normal tracking-[0.015em]">My Posts</p>
+            </a>
+          </div>
+        </div>
+        <div class="flex gap-4 bg-white px-4 py-3">
+          <div
+            class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-[70px]"
+            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAkdbulHSGVR7-MjNnfDeH04u_fAkDD0rnNLv-TVgRBdqDxoybMIZa8MbNBy1tuiggH5EHmdN90-tpny2z1yK_ux16mg7i_r1oyG0RBfS9_bvgnymifgfcAAURmhHqFQ0dBB0DFcsKA2TNCftvgE2c6i9_RVg3Z_T6wraIYlGNMw6mtVfn11nvQVP1vV4fzImHpTpukEja-NgSoHLUd1sx9HMtTSoow0AQf_xm31_UNWWRVi9S8wKwDwvbqq1UQXolN1333ZzysAtwC");'
+          ></div>
+          <div class="flex flex-1 flex-col justify-center">
+            <p class="text-[#121714] text-base font-medium leading-normal">Mountain Trail Hike</p>
+            <p class="text-[#688273] text-sm font-normal leading-normal">
+              I hiked the mountain trail today and it was absolutely breathtaking! The views from the summit were incredible, and the weather was perfect. Highly recommend this
+              hike to anyone looking for a challenging but rewarding experience.
+            </p>
+            <p class="text-[#688273] text-sm font-normal leading-normal">2 days ago · 12 comments</p>
+          </div>
+        </div>
+        <div class="flex gap-4 bg-white px-4 py-3">
+          <div
+            class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-[70px]"
+            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBmZZxQnJi6dgZ6ZxDmi992Q4mCzsUrZUSQBGAOzm34jv5bK2TC7TV5Ck_XgTd-qUXa3ejp1bMoBy1BOf-xfk0PfPKsYy18xPeTT3SZUs-Mu0vIY8__uSkjh2AK75l5-ZGh-42gTM0bom-dNNmcsEx3vtJBXhuBl6bC8N_yJuZuwtI-wQRE9aFrphhryC4CmfPBBl0w-JHk8Dg27FDly3OklbVXN80Qw511Y092-kRk4G5Hr0I1fgizZIf1KybuYJDLXv9JRvcXnc5r");'
+          ></div>
+          <div class="flex flex-1 flex-col justify-center">
+            <p class="text-[#121714] text-base font-medium leading-normal">Hiking to Mountain Peak</p>
+            <p class="text-[#688273] text-sm font-normal leading-normal">
+              I'm planning a hike to the mountain peak next weekend and would love some advice on the best route to take. Any tips on gear, trail conditions, or must-see spots
+              along the way?
+            </p>
+            <p class="text-[#688273] text-sm font-normal leading-normal">3 days ago · 8 comments</p>
+          </div>
+        </div>
+        <div class="flex gap-4 bg-white px-4 py-3">
+          <div
+            class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-[70px]"
+            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCItzqUK4MBiGiDqJFB6TXexk1dB8NFKxxIGrHf21T-Z4rFTGDPwYmizNkZWX5xIFcxvNixOhWgUYsmCYxqmV06T0x0b2C6qRJj7efHn8lHNbtdPHQCIFTAInvA9CYH30DBLOO2WTSb8ST1Do4w0fQSAM4ocm9uhSwIj22cJVokKXw_gHkMtD7pF-Jtx2reIG21DksleNj8sxfLEEkG7YfvUZMT3Rmk96SRcGDR2dYCaN9b5hzAoJkL0h4CL_WTGpUt30TgWTrCgmYW");'
+          ></div>
+          <div class="flex flex-1 flex-col justify-center">
+            <p class="text-[#121714] text-base font-medium leading-normal">Mountain Hiking Photos</p>
+            <p class="text-[#688273] text-sm font-normal leading-normal">
+              I captured some stunning photos during my recent hike in the mountains. The scenery was so picturesque, with lush forests, crystal-clear streams, and towering peaks.
+              Check out my photos and let me know what you think!
+            </p>
+            <p class="text-[#688273] text-sm font-normal leading-normal">4 days ago · 15 comments</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="flex justify-end overflow-hidden px-5 pb-5">
+          <button
+            class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-14 bg-[#94e0b2] text-[#121714] text-base font-bold leading-normal tracking-[0.015em] min-w-0 px-2 gap-4 pl-4 pr-6"
+          >
+            <div class="text-[#121714]" data-icon="Plus" data-size="24px" data-weight="regular">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"></path>
+              </svg>
+            </div>
+          </button>
+        </div>
+        <div class="h-5 bg-white"></div>
+      </div>
+    </div>
+  </body>
+</html>

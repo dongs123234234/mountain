@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KOREA MOUNTAIN INFORMATION</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <div class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="bg-gray-900 shadow-sm border-b border-gray-700">
+            <div class="max-w-7xl mx-auto px-4 py-4">
+                <div class="flex items-center justify-between">
+                    <h1 class="text-xl font-bold text-white">KOREA MOUNTAIN INFORMATION</h1>
+                    
+                    <!-- Desktop Navigation -->
+                    <nav class="hidden md:flex items-center space-x-8">
+                        <a href="popular-mountains.html" class="text-gray-300 hover:text-white font-medium">인기 산</a>
+                        <a href="trail-map.html" class="text-gray-300 hover:text-white font-medium">등산로 지도</a>
+                        <a href="weather.html" class="text-gray-300 hover:text-white font-medium">날씨 정보</a>
+                        <a href="safety.html" class="text-gray-300 hover:text-white font-medium">안전 수칙</a>
+                    </nav>
+
+                    <!-- Mobile Menu Button -->
+                    <div class="md:hidden flex items-center space-x-4">
+                        <button class="p-2 text-gray-300 hover:text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </button>
+                        <button class="p-2 text-gray-300 hover:text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-1">
+            <!-- Hero Section -->
+            <section class="bg-gray-900 py-8">
+                <div class="max-w-7xl mx-auto px-4">
+                    <div class="text-center">
+                        <h2 class="text-3xl font-bold text-white mb-4">한국의 아름다운 산을 탐험하세요</h2>
+                        <p class="text-lg text-gray-300 mb-6">전국 명산 정보와 등산로를 한눈에</p>
+                        
+                        <!-- Search Bar -->
+                        <div class="max-w-md mx-auto">
+                            <div class="relative">
+                                <input 
+                                    type="text" 
+                                    placeholder="산 이름 또는 지역을 검색하세요"
+                                    class="w-full px-4 py-3 pr-12 text-white bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400"
+                                >
+                                <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Mountains -->
+            <section class="py-8 bg-gray-900">
+                <div class="max-w-7xl mx-auto px-4">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-xl font-bold text-white">추천 산</h3>
+                        <a href="popular-mountains.html" class="text-blue-400 hover:text-blue-300 text-sm font-medium">더보기</a>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-gray-800 rounded-lg overflow-hidden">
+                            <div class="h-48 bg-gradient-to-br from-green-400 to-green-600"></div>
+                            <div class="p-4">
+                                <h4 class="font-medium text-white">북한산</h4>
+                                <p class="text-sm text-gray-300">서울 은평구</p>
+                                <p class="text-xs text-gray-400 mt-2">높이: 836.5m</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-800 rounded-lg overflow-hidden">
+                            <div class="h-48 bg-gradient-to-br from-blue-400 to-blue-600"></div>
+                            <div class="p-4">
+                                <h4 class="font-medium text-white">설악산</h4>
+                                <p class="text-sm text-gray-300">강원 속초시</p>
+                                <p class="text-xs text-gray-400 mt-2">높이: 1,708m</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-800 rounded-lg overflow-hidden">
+                            <div class="h-48 bg-gradient-to-br from-purple-400 to-purple-600"></div>
+                            <div class="p-4">
+                                <h4 class="font-medium text-white">관악산</h4>
+                                <p class="text-sm text-gray-300">경기 과천시</p>
+                                <p class="text-xs text-gray-400 mt-2">높이: 632m</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Latest Information -->
+            <section class="py-8">
+                <div class="max-w-7xl mx-auto px-4">
+                    <h3 class="text-xl font-bold text-white mb-6">최신 정보</h3>
+                    
+                    <div class="bg-gray-800 rounded-lg shadow-sm">
+                        <div class="p-6">
+                            <div class="space-y-4">
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
+                                    <div>
+                                        <h4 class="font-medium text-white">겨울철 등산 안전수칙 안내</h4>
+                                        <p class="text-sm text-gray-300 mt-1">겨울 산행 시 주의사항과 필수 장비를 확인하세요.</p>
+                                        <p class="text-xs text-gray-400 mt-2">2024.01.15</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+                                    <div>
+                                        <h4 class="font-medium text-white">북한산 일부 구간 출입 통제</h4>
+                                        <p class="text-sm text-gray-300 mt-1">보수 공사로 인한 임시 출입 통제 구간 안내</p>
+                                        <p class="text-xs text-gray-400 mt-2">2024.01.12</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-2 h-2 bg-yellow-500 rounded-full mt-2"></div>
+                                    <div>
+                                        <h4 class="font-medium text-white">주말 산악 기상 특보</h4>
+                                        <p class="text-sm text-gray-300 mt-1">강풍과 한파 주의보 발령</p>
+                                        <p class="text-xs text-gray-400 mt-2">2024.01.10</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 border-t border-gray-700">
+            <div class="max-w-7xl mx-auto px-4 py-6">
+                <div class="text-center text-sm text-gray-300">
+                    <p>&copy; 2024 KOREA MOUNTAIN INFORMATION. All rights reserved.</p>
+                    <p class="mt-2">대한민국 산악 정보 종합 플랫폼</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html> 

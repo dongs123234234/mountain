@@ -1,0 +1,250 @@
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Space+Grotesk%3Awght%40400%3B500%3B700"
+    />
+
+    <title>Stitch Design</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div
+      class="relative flex size-full min-h-screen flex-col bg-white justify-between group/design-root overflow-x-hidden"
+      style='font-family: "Space Grotesk", "Noto Sans", sans-serif;'
+    >
+      <div>
+        <div class="flex items-center bg-white p-4 pb-2 justify-between">
+          <h2 class="text-[#111714] text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pl-12">HikeHub</h2>
+          <div class="flex w-12 items-center justify-end">
+            <button
+              class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 bg-transparent text-[#111714] gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0"
+            >
+              <div class="text-[#111714]" data-icon="MagnifyingGlass" data-size="24px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+                </svg>
+              </div>
+            </button>
+          </div>
+        </div>
+        <div class="px-4 py-3">
+          <label class="flex flex-col min-w-40 h-12 w-full">
+            <div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+              <div
+                class="text-[#648772] flex border-none bg-[#f0f4f2] items-center justify-center pl-4 rounded-l-lg border-r-0"
+                data-icon="MagnifyingGlass"
+                data-size="24px"
+                data-weight="regular"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+                </svg>
+              </div>
+              <input
+                placeholder="Search for trails"
+                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111714] focus:outline-0 focus:ring-0 border-none bg-[#f0f4f2] focus:border-none h-full placeholder:text-[#648772] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal"
+                value=""
+              />
+            </div>
+          </label>
+        </div>
+        <h2 class="text-[#111714] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Featured Trails</h2>
+        <div class="flex overflow-y-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden">
+          <div class="flex items-stretch p-4 gap-3">
+            <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-60">
+              <div
+                class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg flex flex-col"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBr1GqAEpBub6MY-Wynk84aZtDiJE5ztZE09JmJcvOlLPF0Bd4gy0YlGjjJl6ZGzTIznGrh7YGksfOJb4EPtup-OnG-cBNG48CPoopnVEpH7a3Oaqzke4a2MJddwvyIJ8GEe5kqdBQ7yOxBvH7VGEvtpAgzY8uYWx5DlecIf8uC_6M4BJhRoZRltIy4gai6DkIgrcOQfU6ubNxK_kIJJ3r_17MAhYMSm9aWFgWzLCwi6_atZmNOWvOHluE9U9WnZz81OOyu-kVh-pLg");'
+              ></div>
+              <div>
+                <p class="text-[#111714] text-base font-medium leading-normal">Mount Rainier</p>
+                <p class="text-[#648772] text-sm font-normal leading-normal">Washington</p>
+              </div>
+            </div>
+            <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-60">
+              <div
+                class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg flex flex-col"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCs5d_IhBEaMuQMUvmniH5xJo0BWwB5IwFttidUSFkueRceJSRzg7bcqo2IFR-VeAXmXfSAx5h-EMV3eNSBRRvY0qeTFIGJ82PWWlfXx3gx1qHi_aT3o0nEfMqA7uH8_TMhLlTXXo1DsMVs0VK08JPiIbIo2sBQZVqAFJyWO4Ci4xkJTeJKmkssO9YOrBUAOG9nnAAfexXRflKDo1RkS3UwlDN0ISuSJ8Ifzz7c3w_O0FWACSFjj59j_wIoWa13kK7VYNOdzjEVgg_j");'
+              ></div>
+              <div>
+                <p class="text-[#111714] text-base font-medium leading-normal">Yosemite Valley</p>
+                <p class="text-[#648772] text-sm font-normal leading-normal">California</p>
+              </div>
+            </div>
+            <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-60">
+              <div
+                class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg flex flex-col"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCG0kgpWkYgZnq1JBmkjMhoIJ0hfq2myWcsE1YCZGWpCsGUWrzofdKK3lrp6Rm4rOutXrN3MQoZCacl7S0_yx7ea1RE8Gy5ve40UJA9RLkA-DkGmag8qaVcdLP-g5SRrGu9SqO7KZb2waSprqOo3XRzUZYIEbo-IV8KxjTUGSAzfv1fu6CfLuUpvniPcONtVO-Ny1T3lGltd3tLNenUfMCItDS0r0-SO0S7rFt75XLgMN10JGrr5qH4HqzBKuoPu5JPS8ZIndIS0fTp");'
+              ></div>
+              <div>
+                <p class="text-[#111714] text-base font-medium leading-normal">Zion National Park</p>
+                <p class="text-[#648772] text-sm font-normal leading-normal">Utah</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h2 class="text-[#111714] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Popular Destinations</h2>
+        <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
+          <div class="flex flex-col gap-3 pb-3">
+            <div
+              class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg"
+              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDPiSkxY_c5VnW4KVGZyTMyvf6OkN4HYJVMEjtbmPFi71FbB-epJ-mEYVT7LUOC5TfzVW0nR6otmvWX9i2WeY-UYdWTQaLHSqLFZqur9eDEXbTJdJ_wk4cX72lHddh0vGBIFLHBI191a-Rm_s9jolLe4imFiTDlwGg7e-zCEN3nbu45s3oPYF7LxgUQq2ghacFuToRb-E-XLcNgX8wcbnwdgqy2iWkin_1vCuKyDo8uBiWE9JvnjzqMPoRe0R8KbFSiQuk6qqBWzhs0");'
+            ></div>
+            <div>
+              <p class="text-[#111714] text-base font-medium leading-normal">Appalachian Trail</p>
+              <p class="text-[#648772] text-sm font-normal leading-normal">Georgia to Maine</p>
+            </div>
+          </div>
+          <div class="flex flex-col gap-3 pb-3">
+            <div
+              class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg"
+              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCVUj9xONi6DgsJbLx_nYur7p0FW-hmr68pOCCTEr8JETYJsmK2HkjwaY2KfpnnecKB-rSHaiDZxKUmyFaE8iyGJaS-jAFt145v0BsxH6ZW01c27xwgXWz2zHNKawtis5O_GigXV6BqWwYHR2SS9sRIujbbyu47D_oN1ehUHPLIqaZCVzDo5mxtccX7k_RZ7IeIYY_AToCERMLTouPTjdig6RlgBtBzo0naCDeR08BJ1HHEANpKbDFQXdXYxjCJw5I9FrodHXkyd3pq");'
+            ></div>
+            <div>
+              <p class="text-[#111714] text-base font-medium leading-normal">Pacific Crest Trail</p>
+              <p class="text-[#648772] text-sm font-normal leading-normal">California, Oregon, Washington</p>
+            </div>
+          </div>
+          <div class="flex flex-col gap-3 pb-3">
+            <div
+              class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg"
+              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCSVWjAoR8aU2j11qmwhsi4dSUXmxLLHbOwGtj2s-GjG5mjYc3JFgOBi3Fow1aSJihkH7JRUsZFYFZt-Vw5WWQD98N9vou7t4LubZW8PDjqe7zbZVML907bM-BkyxDg82r7Ii_YDVmXnFyDxNk1eI7pPzxivcXhawf2fAYUCaUmj1Bp1MY--ovuddixCUCFo_o8KFdcB8ueO7gkzEJXDvgAlPcwX9tnty5xGS6g3HLfvLlGZd4rlaIJqqmsziDF2jfWjVuXj-pJatA9");'
+            ></div>
+            <div>
+              <p class="text-[#111714] text-base font-medium leading-normal">Continental Divide Trail</p>
+              <p class="text-[#648772] text-sm font-normal leading-normal">Montana to New Mexico</p>
+            </div>
+          </div>
+          <div class="flex flex-col gap-3 pb-3">
+            <div
+              class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg"
+              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAZWqJttiLdFH2PGoY-vw47nisyIT5t0Nm57qHWtKBsvSZSS_DcWDopn3DLEImkUrzlHDOWb-EQaT99BuVvzR2OGpepBC3Fz5Z0Z2CBtExq2pEzwvylK37spFW0wsEtgPTSTLdyOpBkp1te-sJ7oI_rr_3aX9RECooQUsOnBqHTFsli01IH-QA1GSESi-WG0m0WOaJJLt6txhKFtaK3TaT6Zurt7FrwBnlhB5J7wYCEmCWMBI_1A1GgNqLRW_Z1QkGSSfWCmYPiEHxo");'
+            ></div>
+            <div>
+              <p class="text-[#111714] text-base font-medium leading-normal">John Muir Trail</p>
+              <p class="text-[#648772] text-sm font-normal leading-normal">California</p>
+            </div>
+          </div>
+        </div>
+        <h2 class="text-[#111714] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Community</h2>
+        <div class="flex overflow-y-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden">
+          <div class="flex items-stretch p-4 gap-3">
+            <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-40">
+              <div
+                class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex flex-col"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCpKYhIoXMtMbRw78FvlSJYxaNckGT5cOt_71OoWiKs2mFRRN-Lhilkfm665WuNicjsFUObl-Hjv7STktZq_n70beVooultp6WeItRYkeQkd3U0pxbiuexS7W2yC0uIvosYwfi9nIESwAWH6whOGL9BxzDYxzyVtahGONXNNFn9zp5P3cg3HraFyQOxHiUnGanvQymFY8Cgb-0rK5Ss-YgGoV8PNE4bkl8dpxfX1Ss6--rkhOqEtP-5p2IhaS15KdcgCSWtQZcchzmX");'
+              ></div>
+              <div>
+                <p class="text-[#111714] text-base font-medium leading-normal">Hiking Buddies</p>
+                <p class="text-[#648772] text-sm font-normal leading-normal">Join us for weekly hikes</p>
+              </div>
+            </div>
+            <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-40">
+              <div
+                class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex flex-col"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAuONMkh6azBMVucCEJAt-cTh7Mtwiuteo9zlvQfMMI8ovFUDpkyjuXTjooUyPCIEMGzyyvCl7EdcKhcDnbvwDXZ-EKFaSbUuZ0KB6YCmepa7orSQLcD0Exawq7R9C4MWWT7Lo51YHsndtrQv5EYRA0OQZtM_e4cwdI5CkdifwYRRfhnUXXbyEKq7QRONbTiou_ujHr3Y6UMnYB17lW6YhnukconSGp3ssiXBPtE4HIjExz1wUBFDoL2ibn7pbUFMCdf_eMQWKJ23Ul");'
+              ></div>
+              <div>
+                <p class="text-[#111714] text-base font-medium leading-normal">Trailblazers</p>
+                <p class="text-[#648772] text-sm font-normal leading-normal">Explore new trails together</p>
+              </div>
+            </div>
+            <div class="flex h-full flex-1 flex-col gap-4 rounded-lg min-w-40">
+              <div
+                class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex flex-col"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAfxdNUr4QJhsQD-zSkRfAuv6YiF8qqYJpWJk5W-21HqzAAQh3iaNef1YS3jufGxfufiutWAs1XchbAUrK-k03CuchoTG1V-vkY7S8etJ9HjMz2MemhzvumLnXrGtgd67gRqyZgld1dSi7In-h5XCTEIYYQ8yb7PbqOGe7bIQ_sl8nquaXiNtnaSNXAQvhtEogAFXbvbt7HlkUKlQHqkH3MROu3R3ksNMxGhV_ZoPs11SXMMAABRiCYllHmZ5rVbq_owFdguzN3S5EL");'
+              ></div>
+              <div>
+                <p class="text-[#111714] text-base font-medium leading-normal">Summit Seekers</p>
+                <p class="text-[#648772] text-sm font-normal leading-normal">Conquer the highest peaks</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h2 class="text-[#111714] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Safety &amp; Resources</h2>
+        <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
+          <div class="flex flex-1 gap-3 rounded-lg border border-[#dce5df] bg-white p-4 flex-col">
+            <div class="text-[#111714]" data-icon="ShieldCheck" data-size="24px" data-weight="regular">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                <path
+                  d="M208,40H48A16,16,0,0,0,32,56v58.78c0,89.61,75.82,119.34,91,124.39a15.53,15.53,0,0,0,10,0c15.2-5.05,91-34.78,91-124.39V56A16,16,0,0,0,208,40Zm0,74.79c0,78.42-66.35,104.62-80,109.18-13.53-4.51-80-30.69-80-109.18V56H208ZM82.34,141.66a8,8,0,0,1,11.32-11.32L112,148.68l50.34-50.34a8,8,0,0,1,11.32,11.32l-56,56a8,8,0,0,1-11.32,0Z"
+                ></path>
+              </svg>
+            </div>
+            <div class="flex flex-col gap-1">
+              <h2 class="text-[#111714] text-base font-bold leading-tight">Trail Safety</h2>
+              <p class="text-[#648772] text-sm font-normal leading-normal">Learn about trail safety</p>
+            </div>
+          </div>
+          <div class="flex flex-1 gap-3 rounded-lg border border-[#dce5df] bg-white p-4 flex-col">
+            <div class="text-[#111714]" data-icon="Backpack" data-size="24px" data-weight="regular">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                <path
+                  d="M168,40.58V32A24,24,0,0,0,144,8H112A24,24,0,0,0,88,32v8.58A56.09,56.09,0,0,0,40,96V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V96A56.09,56.09,0,0,0,168,40.58ZM112,24h32a8,8,0,0,1,8,8v8H104V32A8,8,0,0,1,112,24Zm56,136H88v-8a8,8,0,0,1,8-8h64a8,8,0,0,1,8,8ZM88,176h48v8a8,8,0,0,0,16,0v-8h16v40H88Zm112,40H184V152a24,24,0,0,0-24-24H96a24,24,0,0,0-24,24v64H56V96A40,40,0,0,1,96,56h64a40,40,0,0,1,40,40V216ZM152,88a8,8,0,0,1-8,8H112a8,8,0,0,1,0-16h32A8,8,0,0,1,152,88Z"
+                ></path>
+              </svg>
+            </div>
+            <div class="flex flex-col gap-1">
+              <h2 class="text-[#111714] text-base font-bold leading-tight">Gear Guide</h2>
+              <p class="text-[#648772] text-sm font-normal leading-normal">Find gear recommendations</p>
+            </div>
+          </div>
+          <div class="flex flex-1 gap-3 rounded-lg border border-[#dce5df] bg-white p-4 flex-col">
+            <div class="text-[#111714]" data-icon="Sun" data-size="24px" data-weight="regular">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                <path
+                  d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"
+                ></path>
+              </svg>
+            </div>
+            <div class="flex flex-col gap-1">
+              <h2 class="text-[#111714] text-base font-bold leading-tight">Weather Forecast</h2>
+              <p class="text-[#648772] text-sm font-normal leading-normal">Check weather conditions</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="flex gap-2 border-t border-[#f0f4f2] bg-white px-4 pb-3 pt-2">
+          <a class="just flex flex-1 flex-col items-center justify-end gap-1 rounded-full text-[#111714]" href="#">
+            <div class="text-[#111714] flex h-8 items-center justify-center" data-icon="House" data-size="24px" data-weight="fill">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                <path
+                  d="M224,115.55V208a16,16,0,0,1-16,16H168a16,16,0,0,1-16-16V168a8,8,0,0,0-8-8H112a8,8,0,0,0-8,8v40a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V115.55a16,16,0,0,1,5.17-11.78l80-75.48.11-.11a16,16,0,0,1,21.53,0,1.14,1.14,0,0,0,.11.11l80,75.48A16,16,0,0,1,224,115.55Z"
+                ></path>
+              </svg>
+            </div>
+            <p class="text-[#111714] text-xs font-medium leading-normal tracking-[0.015em]">Home</p>
+          </a>
+          <a class="just flex flex-1 flex-col items-center justify-end gap-1 text-[#648772]" href="#">
+            <div class="text-[#648772] flex h-8 items-center justify-center" data-icon="MapTrifold" data-size="24px" data-weight="regular">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                <path
+                  d="M228.92,49.69a8,8,0,0,0-6.86-1.45L160.93,63.52,99.58,32.84a8,8,0,0,0-5.52-.6l-64,16A8,8,0,0,0,24,56V200a8,8,0,0,0,9.94,7.76l61.13-15.28,61.35,30.68A8.15,8.15,0,0,0,160,224a8,8,0,0,0,1.94-.24l64-16A8,8,0,0,0,232,200V56A8,8,0,0,0,228.92,49.69ZM104,52.94l48,24V203.06l-48-24ZM40,62.25l48-12v127.5l-48,12Zm176,131.5-48,12V78.25l48-12Z"
+                ></path>
+              </svg>
+            </div>
+            <p class="text-[#648772] text-xs font-medium leading-normal tracking-[0.015em]">Map</p>
+          </a>
+          <a class="just flex flex-1 flex-col items-center justify-end gap-1 text-[#648772]" href="#">
+            <div class="text-[#648772] flex h-8 items-center justify-center" data-icon="User" data-size="24px" data-weight="regular">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                <path
+                  d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"
+                ></path>
+              </svg>
+            </div>
+            <p class="text-[#648772] text-xs font-medium leading-normal tracking-[0.015em]">Profile</p>
+          </a>
+        </div>
+        <div class="h-5 bg-white"></div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,151 @@
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Space+Grotesk%3Awght%40400%3B500%3B700"
+    />
+
+    <title>Stitch Design</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div
+      class="relative flex size-full min-h-screen flex-col bg-white justify-between group/design-root overflow-x-hidden"
+      style='font-family: "Space Grotesk", "Noto Sans", sans-serif;'
+    >
+      <div>
+        <div class="flex items-center bg-white p-4 pb-2 justify-between">
+          <h2 class="text-[#111714] text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pl-12 pr-12">인기 등산지</h2>
+        </div>
+        <div class="flex items-center gap-4 bg-white px-4 py-3">
+          <div
+            class="bg-center bg-no-repeat aspect-video bg-cover rounded-lg h-14 w-fit"
+            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBguQCUdbllLh--KDC3QQGq9dOG1Pz0r2JT4v9IAXrGSQzZuTZP6eTcGQj0z2JrYese5axBlpv0SY2cDd8c4ovVjJSFzR2ezHdvHO99nG9LpwpXgCLR1q7UmAV5BkLx9oWwYuHfD22UD2SEX7uoWX-ns9k8vKVtzLFHpF2-39zBnSvxcq-Llp9uPABNqGPQsJ0PNvXMGuWsf5OW4CtuVFr3k7GOA9ykelmzmZ5Uk1aTO0GeMYESoLaABvLaq_az-HXq2BxRg2_Mn08R");'
+          ></div>
+          <div class="flex flex-col justify-center">
+            <p class="text-[#111714] text-base font-medium leading-normal line-clamp-1">북한산</p>
+            <p class="text-[#648772] text-sm font-normal leading-normal line-clamp-2">서울 은평구</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 bg-white px-4 py-3">
+          <div
+            class="bg-center bg-no-repeat aspect-video bg-cover rounded-lg h-14 w-fit"
+            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBEBSxdLnVJTIeUJlGeV0Fl707U9RFy06OBYiZ2rxK30rQpeVhVgyY2-Tk1jUbkXkRVi66-f8j3spj6i3i4D-1OA_JbqrnXe-7aeE9I9kiWiYMyyUxHpw286ePaWXsAej570ZVZYVR1ETXCcXPaEikIY3Y6Qs-VIKuHqezhmssn0HRb_9BeBu9meGKA2-AH3RoV4YrJihpMBEagz5w5qiGgMZLoY4yG7LS8PupqcMq9eB4JmrHdH4mdiLYvBa_oeB7ugX6tRAogCQTh");'
+          ></div>
+          <div class="flex flex-col justify-center">
+            <p class="text-[#111714] text-base font-medium leading-normal line-clamp-1">관악산</p>
+            <p class="text-[#648772] text-sm font-normal leading-normal line-clamp-2">경기 과천시</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 bg-white px-4 py-3">
+          <div
+            class="bg-center bg-no-repeat aspect-video bg-cover rounded-lg h-14 w-fit"
+            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDbz-InTiOcMUQ2jZxhvcCxCbtlZUfQUiEOigkvHv4rqU3uMVkJRr_nHhGabfbQ82g8pyyCUe7eWCsnCBBrA7o3V-DK7AnNqD0R7HNzwJpr04detKhSIh5fLsFGioDsgAQFdaUGabxoY0ngS6mQloJW1o6uB6O6Jid4VywskRBFaXIsA_lPGqM2si69MGCjDERbQc6P6kgpJxKbPA1rD0k3iHncLN-V43JWjNGdMC1rFVwSoGs2UCtg-VrLT8lWj-hwQ4GqZme9MIH7");'
+          ></div>
+          <div class="flex flex-col justify-center">
+            <p class="text-[#111714] text-base font-medium leading-normal line-clamp-1">설악산</p>
+            <p class="text-[#648772] text-sm font-normal leading-normal line-clamp-2">강원 속초시</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 bg-white px-4 py-3">
+          <div
+            class="bg-center bg-no-repeat aspect-video bg-cover rounded-lg h-14 w-fit"
+            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBfUhtoecGf1Yha7sQ3cmM-GGF2p4eWIdpalwXznlWwg5nOY6ktdLRBt9o2YR9Y4XkURnB6mynDBjxvX7AJJhFh4Tru0A2XtHQn3IWFI1oqJdwEGDEPg6XC9pa_8rA7AbVBdfVNQK8p6qjQvwg0V1YoW6NRA7KVIfiZl6kKUyo9DMQ7sUjbEADHeUYDcub_QJvbamrk5PEeUSzpyoLic7e25jg7kfUPXGIojpKA1pj1cPaXvYvZBKecj5npPSa37OkDD1gj5PA0fqfL");'
+          ></div>
+          <div class="flex flex-col justify-center">
+            <p class="text-[#111714] text-base font-medium leading-normal line-clamp-1">중미산</p>
+            <p class="text-[#648772] text-sm font-normal leading-normal line-clamp-2">경기 양평군</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 bg-white px-4 py-3">
+          <div
+            class="bg-center bg-no-repeat aspect-video bg-cover rounded-lg h-14 w-fit"
+            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBrIANAINs1J0jsIQrfNz6yoIsjq4SYfq-CuL3gK3Y4-UI-okdJ2bJySx3CdUnAXrJhe6XjAjMJ5JLNlpRaDkSBqBBMmhzVipJqQuenRrKYyIxWBFQgN0uNvXn47xjRfaRyFsCpq8GfcX7ZHfcEz4Y96xcwK7jRypqb2FnFA4N4mHAjaf5H-JG-xNx5-D3KIE_FcFoqzGH1zL3A2kRvVXN-IDaPQTSBXPSAo6QFNnu6E10NBSGSjJqDd_0yXJ_UPM97wCMF6TnIIabY");'
+          ></div>
+          <div class="flex flex-col justify-center">
+            <p class="text-[#111714] text-base font-medium leading-normal line-clamp-1">연인산</p>
+            <p class="text-[#648772] text-sm font-normal leading-normal line-clamp-2">경기 가평군</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 bg-white px-4 py-3">
+          <div
+            class="bg-center bg-no-repeat aspect-video bg-cover rounded-lg h-14 w-fit"
+            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCC9uVxovnWaM6vIQwTgNZ1w_JoLYSaK48P6-d93xPbSkBBPYfMDnTOuFOSdv4uZvT7md6JcmAKx7K3W95QPtetpuH64C76AXGBuccaP0SZc_TORl-7IBsg1CePuv2jvwwvADqooe5d4-F6w7w7Mxz9EyUEDpGJQIsRvMITmOAgPTxO2HX0R2pFDDsJAu9hTajo3nBAJ9ACSbekHTa1umIWCDMkrU3i7BF01zT5Z4fFH9M8uwFzhmImn2Ntv4ddfY_Hu1AjeyBQaKgf");'
+          ></div>
+          <div class="flex flex-col justify-center">
+            <p class="text-[#111714] text-base font-medium leading-normal line-clamp-1">용문산</p>
+            <p class="text-[#648772] text-sm font-normal leading-normal line-clamp-2">경기 양평군</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 bg-white px-4 py-3">
+          <div
+            class="bg-center bg-no-repeat aspect-video bg-cover rounded-lg h-14 w-fit"
+            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuABC4cIhNa_-b27PMApr9phZ-2fGQAYWKYDc26e6KAWK5mivaMsY8YdiDL1Oskggz5oFIBdtbtoaiIrv1Na8llQxPkPKDx-zIhu19YRbvWy5bjVfezB6m0WVgBbPJwInenvXprm5w3Q-JOjpS0ltiv0_4cXEiUrO38vYa6KL4QhNHstiAVskTccubUPnUKpYdoZGBJ1Lnf_zNzAdnPri1bXFMxgGWT9r3M-QYYWasDUYLbliFsyDP1wPjfEAonNjs6rtz-xl2oxHMIa");'
+          ></div>
+          <div class="flex flex-col justify-center">
+            <p class="text-[#111714] text-base font-medium leading-normal line-clamp-1">용문산</p>
+            <p class="text-[#648772] text-sm font-normal leading-normal line-clamp-2">경기 양평군</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="flex gap-2 border-t border-[#f0f4f2] bg-white px-4 pb-3 pt-2">
+          <a class="just flex flex-1 flex-col items-center justify-end gap-1 text-[#648772]" href="#">
+            <div class="text-[#648772] flex h-8 items-center justify-center" data-icon="House" data-size="24px" data-weight="regular">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                <path
+                  d="M218.83,103.77l-80-75.48a1.14,1.14,0,0,1-.11-.11,16,16,0,0,0-21.53,0l-.11.11L37.17,103.77A16,16,0,0,0,32,115.55V208a16,16,0,0,0,16,16H96a16,16,0,0,0,16-16V160h32v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V115.55A16,16,0,0,0,218.83,103.77ZM208,208H160V160a16,16,0,0,0-16-16H112a16,16,0,0,0-16,16v48H48V115.55l.11-.1L128,40l79.9,75.43.11.1Z"
+                ></path>
+              </svg>
+            </div>
+            <p class="text-[#648772] text-xs font-medium leading-normal tracking-[0.015em]">홈</p>
+          </a>
+          <a class="just flex flex-1 flex-col items-center justify-end gap-1 text-[#648772]" href="#">
+            <div class="text-[#648772] flex h-8 items-center justify-center" data-icon="MagnifyingGlass" data-size="24px" data-weight="regular">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+              </svg>
+            </div>
+            <p class="text-[#648772] text-xs font-medium leading-normal tracking-[0.015em]">검색</p>
+          </a>
+          <a class="just flex flex-1 flex-col items-center justify-end gap-1 rounded-full text-[#111714]" href="#">
+            <div class="text-[#111714] flex h-8 items-center justify-center" data-icon="Fire" data-size="24px" data-weight="fill">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                <path
+                  d="M143.38,17.85a8,8,0,0,0-12.63,3.41l-22,60.41L84.59,58.26a8,8,0,0,0-11.93.89C51,87.53,40,116.08,40,144a88,88,0,0,0,176,0C216,84.55,165.21,36,143.38,17.85Zm40.51,135.49a57.6,57.6,0,0,1-46.56,46.55A7.65,7.65,0,0,1,136,200a8,8,0,0,1-1.32-15.89c16.57-2.79,30.63-16.85,33.44-33.45a8,8,0,0,1,15.78,2.68Z"
+                ></path>
+              </svg>
+            </div>
+            <p class="text-[#111714] text-xs font-medium leading-normal tracking-[0.015em]">인기</p>
+          </a>
+          <a class="just flex flex-1 flex-col items-center justify-end gap-1 text-[#648772]" href="#">
+            <div class="text-[#648772] flex h-8 items-center justify-center" data-icon="Info" data-size="24px" data-weight="regular">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                <path
+                  d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"
+                ></path>
+              </svg>
+            </div>
+            <p class="text-[#648772] text-xs font-medium leading-normal tracking-[0.015em]">정보</p>
+          </a>
+          <a class="just flex flex-1 flex-col items-center justify-end gap-1 text-[#648772]" href="#">
+            <div class="text-[#648772] flex h-8 items-center justify-center" data-icon="User" data-size="24px" data-weight="regular">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                <path
+                  d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"
+                ></path>
+              </svg>
+            </div>
+            <p class="text-[#648772] text-xs font-medium leading-normal tracking-[0.015em]">나의 산</p>
+          </a>
+        </div>
+        <div class="h-5 bg-white"></div>
+      </div>
+    </div>
+  </body>
+</html>
