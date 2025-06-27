@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>등산로 지도 - KOREA MOUNTAIN INFORMATION</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Noto Sans KR', sans-serif; }
+        .trail-map {
+            background: linear-gradient(135deg, #4ade80 0%, #22c55e 25%, #15803d  50%, #166534 75%, #14532d 100%);
+            min-height: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+        .trail-line {
+            position: absolute;
+            border: 3px dashed #fff;
+            opacity: 0.8;
+        }
+        .trail-marker {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #ef4444;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <div class="min-h-screen flex flex-col">
+        <header class="bg-gray-900 shadow-sm border-b border-gray-700">
+            <div class="max-w-7xl mx-auto px-4 py-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <a href="index.html" class="text-gray-300 hover:text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                            </svg>
+                        </a>
+                        <h1 class="text-xl font-bold text-white">KOREA MOUNTAIN INFORMATION</h1>
+                    </div>
+                    
+                    <!-- Desktop Navigation -->
+                    <nav class="hidden md:flex items-center space-x-8">
+                        <a href="popular-mountains.html" class="text-gray-300 hover:text-white font-medium">인기 산</a>
+                        <a href="trail-map.html" class="text-blue-400 font-medium">등산로 지도</a>
+                        <a href="weather.html" class="text-gray-300 hover:text-white font-medium">날씨 정보</a>
+                        <a href="safety.html" class="text-gray-300 hover:text-white font-medium">안전 수칙</a>
+                        <a href="my-team.html" class="text-gray-300 hover:text-white font-medium">MY TEAM</a>
+                    </nav>
+
+                    <!-- Mobile Menu Button -->
+                    <div class="md:hidden">
+                        <button class="p-2 text-gray-300 hover:text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-1 py-6">
+            <div class="max-w-7xl mx-auto px-4 space-y-6">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-white mb-2">등산로 지도</h2>
+                    <p class="text-gray-300">주요 산의 등산로와 코스 정보를 확인하세요</p>
+                </div>
+
+                <!-- 지도 선택 -->
+                <div class="bg-gray-800 rounded-lg shadow-sm p-6">
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                        </svg>
+                        산 선택
+                    </h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+                            북한산
+                        </button>
+                        <button class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+                            설악산
+                        </button>
+                        <button class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+                            관악산
+                        </button>
+                        <button class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+                            지리산
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 북한산 지도 -->
+                <div class="bg-gray-800 rounded-lg shadow-sm overflow-hidden">
+                    <div class="p-4 bg-gray-700">
+                        <h3 class="text-lg font-bold text-white flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            북한산 등산로 지도
+                        </h3>
+                        <p class="text-sm text-gray-300 mt-1">서울 은평구 • 높이: 836.5m</p>
+                    </div>
+                    
+                    <div class="trail-map relative">
+                        <!-- 등산로 라인들 -->
+                        <div class="trail-line" style="top: 20%; left: 10%; width: 200px; height: 3px; transform: rotate(25deg);"></div>
+                        <div class="trail-line" style="top: 40%; left: 30%; width: 150px; height: 3px; transform: rotate(-15deg);"></div>
+                        <div class="trail-line" style="top: 60%; left: 15%; width: 180px; height: 3px; transform: rotate(35deg);"></div>
+                        <div class="trail-line" style="top: 35%; left: 50%; width: 120px; height: 3px; transform: rotate(60deg);"></div>
+                        
+                        <!-- 등산로 마커들 -->
+                        <div class="trail-marker" style="top: 25%; left: 15%;"></div>
+                        <div class="trail-marker" style="top: 45%; left: 35%;"></div>
+                        <div class="trail-marker" style="top: 70%; left: 25%;"></div>
+                        <div class="trail-marker" style="top: 40%; left: 55%;"></div>
+                        <div class="trail-marker" style="top: 20%; left: 45%;">
+                            <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-white text-black text-xs px-2 py-1 rounded whitespace-nowrap">
+                                정상 (836.5m)
+                            </div>
+                        </div>
+                        
+                        <!-- 등산로 정보 -->
+                        <div class="absolute bottom-4 left-4 bg-black bg-opacity-70 text-white p-3 rounded-lg">
+                            <h4 class="font-medium mb-2">주요 등산로</h4>
+                            <div class="space-y-1 text-sm">
+                                <div class="flex items-center">
+                                    <div class="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
+                                    <span>우이동 코스 (2.8km, 2시간)</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
+                                    <span>정릉 코스 (3.2km, 2.5시간)</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                                    <span>구기동 코스 (2.5km, 1.5시간)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 등산로 코스 정보 -->
+                <div class="bg-gray-800 rounded-lg shadow-sm p-6">
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-orange-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                        </svg>
+                        등산 코스 정보
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="border-l-4 border-green-500 pl-4">
+                            <h4 class="font-medium text-white mb-2">초급 코스</h4>
+                            <div class="space-y-2 text-sm text-gray-300">
+                                <p><strong>구기동 코스</strong></p>
+                                <p>거리: 2.5km | 소요시간: 1.5시간</p>
+                                <p>난이도: ⭐⭐☆☆☆</p>
+                                <p>완만한 경사로 초보자에게 적합</p>
+                            </div>
+                        </div>
+                        
+                        <div class="border-l-4 border-yellow-500 pl-4">
+                            <h4 class="font-medium text-white mb-2">중급 코스</h4>
+                            <div class="space-y-2 text-sm text-gray-300">
+                                <p><strong>우이동 코스</strong></p>
+                                <p>거리: 2.8km | 소요시간: 2시간</p>
+                                <p>난이도: ⭐⭐⭐☆☆</p>
+                                <p>적당한 난이도의 대표 코스</p>
+                            </div>
+                        </div>
+                        
+                        <div class="border-l-4 border-red-500 pl-4">
+                            <h4 class="font-medium text-white mb-2">고급 코스</h4>
+                            <div class="space-y-2 text-sm text-gray-300">
+                                <p><strong>정릉 코스</strong></p>
+                                <p>거리: 3.2km | 소요시간: 2.5시간</p>
+                                <p>난이도: ⭐⭐⭐⭐☆</p>
+                                <p>가파른 암벽 구간 포함</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 등산로 주의사항 -->
+                <div class="bg-gray-800 rounded-lg shadow-sm p-6">
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.464 0L4.35 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                        </svg>
+                        등산로 주의사항
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-medium text-white mb-3">현재 상황</h4>
+                            <div class="space-y-3">
+                                <div class="bg-green-50 border-l-4 border-green-400 p-4">
+                                    <div class="flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <h5 class="font-medium text-green-800">우이동 코스</h5>
+                                    </div>
+                                    <p class="text-sm text-green-700 mt-2">정상 등반 가능</p>
+                                </div>
+                                
+                                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                                    <div class="flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.464 0L4.35 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                                        </svg>
+                                        <h5 class="font-medium text-yellow-800">정릉 코스</h5>
+                                    </div>
+                                    <p class="text-sm text-yellow-700 mt-2">일부 구간 보수 공사 중</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-medium text-white mb-3">준비물 체크리스트</h4>
+                            <div class="space-y-2">
+                                <label class="flex items-center text-sm text-gray-300">
+                                    <input type="checkbox" class="rounded mr-2">
+                                    등산화 (미끄럼 방지)
+                                </label>
+                                <label class="flex items-center text-sm text-gray-300">
+                                    <input type="checkbox" class="rounded mr-2">
+                                    충분한 물과 간식
+                                </label>
+                                <label class="flex items-center text-sm text-gray-300">
+                                    <input type="checkbox" class="rounded mr-2">
+                                    등산 스틱
+                                </label>
+                                <label class="flex items-center text-sm text-gray-300">
+                                    <input type="checkbox" class="rounded mr-2">
+                                    응급처치 용품
+                                </label>
+                                <label class="flex items-center text-sm text-gray-300">
+                                    <input type="checkbox" class="rounded mr-2">
+                                    휴대폰 (완전 충전)
+                                </label>
+                                <label class="flex items-center text-sm text-gray-300">
+                                    <input type="checkbox" class="rounded mr-2">
+                                    날씨 확인
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 교통 정보 -->
+                <div class="bg-gray-800 rounded-lg shadow-sm p-6">
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2v0a2 2 0 01-2 2H10a2 2 0 01-2-2v0a2 2 0 01-2-2V9a2 2 0 012-2h2.586a1 1 0 01.707.293l2.414 2.414a1 1 0 00.707.293H17" />
+                        </svg>
+                        교통 정보
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                            <h4 class="font-medium text-white mb-3">우이동 입구</h4>
+                            <div class="space-y-2 text-sm text-gray-300">
+                                <p><strong>지하철:</strong> 4호선 미아사거리역</p>
+                                <p><strong>버스:</strong> 120, 153번</p>
+                                <p><strong>주차:</strong> 우이동 공영주차장</p>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-medium text-white mb-3">정릉 입구</h4>
+                            <div class="space-y-2 text-sm text-gray-300">
+                                <p><strong>지하철:</strong> 4호선 정릉역</p>
+                                <p><strong>버스:</strong> 171, 172번</p>
+                                <p><strong>주차:</strong> 정릉 주차장</p>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-medium text-white mb-3">구기동 입구</h4>
+                            <div class="space-y-2 text-sm text-gray-300">
+                                <p><strong>지하철:</strong> 3호선 구파발역</p>
+                                <p><strong>버스:</strong> 704번</p>
+                                <p><strong>주차:</strong> 구기동 공영주차장</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bg-gray-900 border-t border-gray-700">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex justify-around py-3">
+                    <a href="index.html" class="flex flex-col items-center text-gray-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        </svg>
+                        <span class="text-xs mt-1">홈</span>
+                    </a>
+                    <a href="popular-mountains.html" class="flex flex-col items-center text-gray-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3l6 6 6-6M5 21l6-6 6 6" />
+                        </svg>
+                        <span class="text-xs mt-1">인기</span>
+                    </a>
+                    <a href="#" class="flex flex-col items-center text-blue-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                        </svg>
+                        <span class="text-xs mt-1">지도</span>
+                    </a>
+                    <a href="weather.html" class="flex flex-col items-center text-gray-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                        <span class="text-xs mt-1">날씨</span>
+                    </a>
+                    <a href="safety.html" class="flex flex-col items-center text-gray-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.464 0L4.35 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                        </svg>
+                        <span class="text-xs mt-1">안전</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</body>
+</html> 
