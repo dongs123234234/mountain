@@ -1,62 +1,558 @@
+"use client";
+
+import { useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Link from "next/link";
 
 export default function PopularMountains() {
+  const [selectedDifficulty, setSelectedDifficulty] = useState("전체");
+
   const mountains = [
     {
-      name: "북한산",
-      location: "서울 은평구",
-      height: "836.5m",
-      gradient: "from-green-400 to-green-600"
-    },
-    {
+      id: 1,
       name: "설악산",
-      location: "강원 속초시",
+      location: "강원도 속초/인제/양양",
       height: "1,708m",
-      gradient: "from-blue-400 to-blue-600"
+      features: "국내 3대 명산, 암릉·계곡, 사계절 풍광",
+      difficulty: "중~상",
+      duration: "3~10시간 (코스 다양)",
+      restrictions: "봄·가을 산불조심기간 일부 통제",
+      equipment: "방풍의, 스틱, 아이젠(겨울), 간식",
+      gradient: "from-blue-400 to-blue-600",
+      image: "/images/mountains/seorak.jpg"
     },
     {
-      name: "관악산",
-      location: "경기 과천시",
-      height: "632m",
-      gradient: "from-purple-400 to-purple-600"
-    },
-    {
-      name: "용문산",
-      location: "경기 양평군",
-      height: "1,157m",
-      gradient: "from-orange-400 to-orange-600"
-    },
-    {
+      id: 2,
       name: "지리산",
-      location: "전라남도 구례군",
+      location: "전남·전북·경남",
       height: "1,915m",
-      gradient: "from-emerald-400 to-emerald-600"
+      features: "남한 최고봉 천왕봉, 종주코스 유명",
+      difficulty: "상",
+      duration: "당일/2박3일 종주",
+      restrictions: "동절기 야간출입금지",
+      equipment: "방한복, 스틱, 헤드랜턴",
+      gradient: "from-emerald-400 to-emerald-600",
+      image: "/images/mountains/jiri.jpg"
+    },
+    {
+      id: 3,
+      name: "한라산",
+      location: "제주도",
+      height: "1,947m",
+      features: "화산지형, 백록담",
+      difficulty: "중",
+      duration: "4~9시간",
+      restrictions: "기상악화 시 입산 제한",
+      equipment: "방풍자켓, 모자, 식수",
+      gradient: "from-orange-400 to-orange-600",
+      image: "/images/mountains/halla.jpg"
+    },
+    {
+      id: 4,
+      name: "태백산",
+      location: "강원도 태백",
+      height: "1,567m",
+      features: "눈꽃명소, 천제단",
+      difficulty: "중",
+      duration: "3~5시간",
+      restrictions: "산불예방기간 통제",
+      equipment: "아이젠, 방한복",
+      gradient: "from-indigo-400 to-indigo-600",
+      image: "/images/mountains/taebaek.jpg"
+    },
+    {
+      id: 5,
+      name: "덕유산",
+      location: "전북 무주",
+      height: "1,614m",
+      features: "향적봉, 겨울설경",
+      difficulty: "중",
+      duration: "4~8시간",
+      restrictions: "일부구간 계절제한",
+      equipment: "방한, 스틱",
+      gradient: "from-purple-400 to-purple-600",
+      image: "/images/mountains/deogu.jpg"
+    },
+    {
+      id: 6,
+      name: "오대산",
+      location: "강원도 평창",
+      height: "1,563m",
+      features: "월정사, 전나무숲길",
+      difficulty: "중",
+      duration: "4~8시간",
+      restrictions: "",
+      equipment: "방풍의, 간식",
+      gradient: "from-green-400 to-green-600",
+      image: "/images/mountains/odae.jpg"
+    },
+    {
+      id: 7,
+      name: "소백산",
+      location: "충북 단양, 경북 영주",
+      height: "1,439m",
+      features: "철쭉군락, 겨울풍경",
+      difficulty: "중",
+      duration: "4~7시간",
+      restrictions: "봄철 제한",
+      equipment: "방풍, 식수",
+      gradient: "from-pink-400 to-pink-600",
+      image: "/images/mountains/sobaek.jpg"
+    },
+    {
+      id: 8,
+      name: "가리왕산",
+      location: "강원도 정선",
+      height: "1,561m",
+      features: "야생화 서식지",
+      difficulty: "중",
+      duration: "4~7시간",
+      restrictions: "",
+      equipment: "간식, 방풍의",
+      gradient: "from-yellow-400 to-yellow-600",
+      image: "/images/mountains/gariwang.jpg"
+    },
+    {
+      id: 9,
+      name: "속리산",
+      location: "충북 보은",
+      height: "1,058m",
+      features: "법주사, 문장대",
+      difficulty: "중",
+      duration: "3~6시간",
+      restrictions: "",
+      equipment: "간식, 스틱",
+      gradient: "from-teal-400 to-teal-600",
+      image: "/images/mountains/sogri.jpg"
+    },
+    {
+      id: 10,
+      name: "월악산",
+      location: "충북 제천",
+      height: "1,097m",
+      features: "영봉, 암릉",
+      difficulty: "중~상",
+      duration: "4~6시간",
+      restrictions: "",
+      equipment: "스틱, 식수",
+      gradient: "from-red-400 to-red-600",
+      image: "/images/mountains/worak.jpg"
+    },
+    {
+      id: 11,
+      name: "북한산",
+      location: "서울, 경기",
+      height: "836m",
+      features: "백운대, 서울 전망",
+      difficulty: "중",
+      duration: "3~5시간",
+      restrictions: "일부 예약구간",
+      equipment: "등산화, 식수",
+      gradient: "from-blue-500 to-blue-700",
+      image: "/images/mountains/bukhan.jpg"
+    },
+    {
+      id: 12,
+      name: "도봉산",
+      location: "서울, 경기",
+      height: "740m",
+      features: "암릉코스 인기",
+      difficulty: "중",
+      duration: "3~4시간",
+      restrictions: "",
+      equipment: "장갑, 등산화",
+      gradient: "from-gray-400 to-gray-600",
+      image: "/images/mountains/dobong.jpg"
+    },
+    {
+      id: 13,
+      name: "수락산",
+      location: "서울, 경기",
+      height: "638m",
+      features: "바위능선",
+      difficulty: "중",
+      duration: "3~4시간",
+      restrictions: "",
+      equipment: "등산화",
+      gradient: "from-cyan-400 to-cyan-600",
+      image: "/images/mountains/surak.jpg"
+    },
+    {
+      id: 14,
+      name: "관악산",
+      location: "서울 관악구",
+      height: "632m",
+      features: "서울대 인근, 암릉",
+      difficulty: "중",
+      duration: "3~4시간",
+      restrictions: "",
+      equipment: "장갑",
+      gradient: "from-violet-400 to-violet-600",
+      image: "/images/mountains/gwanak.jpg"
+    },
+    {
+      id: 15,
+      name: "청계산",
+      location: "경기 성남",
+      height: "620m",
+      features: "접근성 좋음",
+      difficulty: "하~중",
+      duration: "2~3시간",
+      restrictions: "",
+      equipment: "식수",
+      gradient: "from-lime-400 to-lime-600",
+      image: "/images/mountains/cheonggye.jpg"
+    },
+    {
+      id: 16,
+      name: "계룡산",
+      location: "충남 공주",
+      height: "845m",
+      features: "삼불봉, 계룡팔경",
+      difficulty: "중",
+      duration: "3~5시간",
+      restrictions: "",
+      equipment: "간식, 스틱",
+      gradient: "from-amber-400 to-amber-600",
+      image: "/images/mountains/gyeryong.jpg"
+    },
+    {
+      id: 17,
+      name: "팔공산",
+      location: "대구",
+      height: "1,192m",
+      features: "갓바위",
+      difficulty: "중",
+      duration: "3~6시간",
+      restrictions: "",
+      equipment: "스틱",
+      gradient: "from-rose-400 to-rose-600",
+      image: "/images/mountains/palgong.jpg"
+    },
+    {
+      id: 18,
+      name: "무등산",
+      location: "광주",
+      height: "1,187m",
+      features: "주상절리",
+      difficulty: "중",
+      duration: "3~5시간",
+      restrictions: "",
+      equipment: "등산화",
+      gradient: "from-emerald-500 to-emerald-700",
+      image: "/images/mountains/mudeung.jpg"
+    },
+    {
+      id: 19,
+      name: "내장산",
+      location: "전북 정읍",
+      height: "763m",
+      features: "단풍명소",
+      difficulty: "중",
+      duration: "3~5시간",
+      restrictions: "",
+      equipment: "간식",
+      gradient: "from-orange-500 to-red-500",
+      image: "/images/mountains/naejang.jpg"
+    },
+    {
+      id: 20,
+      name: "마이산",
+      location: "전북 진안",
+      height: "686m",
+      features: "두 봉우리",
+      difficulty: "중",
+      duration: "3~4시간",
+      restrictions: "",
+      equipment: "간식",
+      gradient: "from-stone-400 to-stone-600",
+      image: "/images/mountains/mai.jpg"
+    },
+    {
+      id: 21,
+      name: "치악산",
+      location: "강원 원주",
+      height: "1,288m",
+      features: "비로봉",
+      difficulty: "중~상",
+      duration: "4~8시간",
+      restrictions: "",
+      equipment: "스틱, 식수",
+      gradient: "from-sky-400 to-sky-600",
+      image: "/images/mountains/chiak.jpg"
+    },
+    {
+      id: 22,
+      name: "금정산",
+      location: "부산",
+      height: "801m",
+      features: "금샘, 전망대",
+      difficulty: "중",
+      duration: "3~5시간",
+      restrictions: "",
+      equipment: "간식",
+      gradient: "from-yellow-500 to-orange-500",
+      image: "/images/mountains/geumjeong.jpg"
+    },
+    {
+      id: 23,
+      name: "장산",
+      location: "부산 해운대",
+      height: "634m",
+      features: "해운대 전경",
+      difficulty: "중",
+      duration: "3~4시간",
+      restrictions: "",
+      equipment: "식수",
+      gradient: "from-blue-300 to-blue-500",
+      image: "/images/mountains/jang.jpg"
+    },
+    {
+      id: 24,
+      name: "가지산",
+      location: "울산",
+      height: "1,240m",
+      features: "영남알프스 최고봉",
+      difficulty: "중",
+      duration: "4~6시간",
+      restrictions: "",
+      equipment: "방풍의",
+      gradient: "from-green-500 to-green-700",
+      image: "/images/mountains/gaji.jpg"
+    },
+    {
+      id: 25,
+      name: "신불산",
+      location: "울산",
+      height: "1,159m",
+      features: "억새밭",
+      difficulty: "중",
+      duration: "4~6시간",
+      restrictions: "",
+      equipment: "방풍, 간식",
+      gradient: "from-yellow-300 to-yellow-500",
+      image: "/images/mountains/sinbul.jpg"
+    },
+    {
+      id: 26,
+      name: "화왕산",
+      location: "경남 창녕",
+      height: "756m",
+      features: "억새",
+      difficulty: "중",
+      duration: "3~4시간",
+      restrictions: "",
+      equipment: "간식",
+      gradient: "from-amber-300 to-amber-500",
+      image: "/images/mountains/hwawang.jpg"
+    },
+    {
+      id: 27,
+      name: "황매산",
+      location: "경남 합천",
+      height: "1,108m",
+      features: "철쭉군락",
+      difficulty: "중",
+      duration: "3~5시간",
+      restrictions: "",
+      equipment: "간식",
+      gradient: "from-pink-300 to-pink-500",
+      image: "/images/mountains/hwangmae.jpg"
+    },
+    {
+      id: 28,
+      name: "무학산",
+      location: "경남 창원",
+      height: "761m",
+      features: "마산 전경",
+      difficulty: "중",
+      duration: "3~5시간",
+      restrictions: "",
+      equipment: "간식",
+      gradient: "from-purple-300 to-purple-500",
+      image: "/images/mountains/muhak.jpg"
+    },
+    {
+      id: 29,
+      name: "송악산",
+      location: "제주 서귀포",
+      height: "104m",
+      features: "해안산책로",
+      difficulty: "하",
+      duration: "1~2시간",
+      restrictions: "",
+      equipment: "식수",
+      gradient: "from-emerald-300 to-blue-400",
+      image: "/images/mountains/songak.jpg"
+    },
+    {
+      id: 30,
+      name: "성산일출봉",
+      location: "제주",
+      height: "182m",
+      features: "분화구, 일출",
+      difficulty: "하",
+      duration: "1~2시간",
+      restrictions: "",
+      equipment: "간식",
+      gradient: "from-orange-300 to-yellow-400",
+      image: "/images/mountains/seongsan.jpg"
     }
   ];
 
+  const difficulties = ["전체", "하", "하~중", "중", "중~상", "상"];
+
+  const filteredMountains = selectedDifficulty === "전체" 
+    ? mountains 
+    : mountains.filter(mountain => mountain.difficulty === selectedDifficulty);
+
+  const getDifficultyColor = (difficulty: string) => {
+    switch(difficulty) {
+      case "하": return "text-green-400";
+      case "하~중": return "text-yellow-400";
+      case "중": return "text-orange-400";
+      case "중~상": return "text-red-400";
+      case "상": return "text-red-600";
+      default: return "text-gray-400";
+    }
+  };
+
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-gray-900">
       <Header />
 
-      <main className="flex-1 py-4">
-        <div className="max-w-7xl mx-auto px-4 space-y-3">
-          {mountains.map((mountain, index) => (
-            <div key={index} className="bg-gray-800 rounded-lg shadow-sm p-4">
-              <div className="flex items-center space-x-4">
-                <div className={`w-16 h-12 bg-gradient-to-br ${mountain.gradient} rounded-lg`}></div>
-                <div className="flex-1">
-                  <h3 className="font-medium text-white">{mountain.name}</h3>
-                  <p className="text-sm text-gray-300">{mountain.location}</p>
-                  <p className="text-xs text-gray-400">높이: {mountain.height}</p>
+      <main className="flex-1 py-6">
+        <div className="max-w-7xl mx-auto px-4">
+          {/* 페이지 제목 */}
+          <div className="mb-6">
+            <h1 className="text-2xl font-bold text-white mb-2">인기 산 정보</h1>
+            <p className="text-gray-300">대한민국 주요 산 30곳의 상세 정보를 확인하세요</p>
+          </div>
+
+          {/* 난이도 필터 */}
+          <div className="mb-6">
+            <h3 className="text-lg font-semibold text-white mb-3">난이도별 필터</h3>
+            <div className="flex flex-wrap gap-2">
+              {difficulties.map((difficulty) => (
+                <button
+                  key={difficulty}
+                  onClick={() => setSelectedDifficulty(difficulty)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                    selectedDifficulty === difficulty
+                      ? "bg-blue-600 text-white"
+                      : "bg-gray-700 text-gray-300 hover:bg-gray-600"
+                  }`}
+                >
+                  {difficulty}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* 산 목록 */}
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {filteredMountains.map((mountain) => (
+              <div key={mountain.id} className="bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                {/* 산 이미지 */}
+                <div className="h-48 relative overflow-hidden">
+                  <img 
+                    src={mountain.image} 
+                    alt={`${mountain.name} 풍경`}
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    onLoad={(e) => {
+                      console.log(`이미지 로드 성공: ${mountain.name}`);
+                    }}
+                    onError={(e) => {
+                      console.log(`이미지 로드 실패: ${mountain.name} - ${mountain.image}`);
+                      // 이미지 로드 실패 시 그라데이션 배경으로 폴백
+                      const container = e.currentTarget.parentElement!;
+                      e.currentTarget.style.display = 'none';
+                      container.classList.add('bg-gradient-to-br');
+                      container.classList.add(...mountain.gradient.split(' '));
+                    }}
+                  />
+                  <div className={`absolute top-3 right-3 px-2 py-1 rounded-full text-xs font-semibold ${getDifficultyColor(mountain.difficulty)} bg-black bg-opacity-50`}>
+                    {mountain.difficulty}
+                  </div>
                 </div>
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                </svg>
+
+                <div className="p-5">
+                  {/* 산 기본 정보 */}
+                  <div className="mb-4">
+                    <h3 className="text-xl font-bold text-white mb-1">{mountain.name}</h3>
+                    <p className="text-sm text-gray-300 mb-1">{mountain.location}</p>
+                    <p className="text-lg font-semibold text-blue-400">{mountain.height}</p>
+                  </div>
+
+                  {/* 특징 */}
+                  <div className="mb-3">
+                    <p className="text-sm text-gray-300 leading-relaxed">{mountain.features}</p>
+                  </div>
+
+                  {/* 소요시간 */}
+                  <div className="mb-3">
+                    <div className="flex items-center space-x-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <span className="text-xs text-gray-400">{mountain.duration}</span>
+                    </div>
+                  </div>
+
+                  {/* 준비물 */}
+                  <div className="mb-4">
+                    <div className="flex items-start space-x-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                      </svg>
+                      <span className="text-xs text-gray-400 leading-relaxed">{mountain.equipment}</span>
+                    </div>
+                  </div>
+
+                  {/* 입산 제한 정보 */}
+                  {mountain.restrictions && (
+                    <div className="mb-4">
+                      <div className="flex items-start space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-yellow-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.464 0L4.35 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                        </svg>
+                        <span className="text-xs text-yellow-400 leading-relaxed">{mountain.restrictions}</span>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* 상세 정보 버튼 */}
+                  <button className="w-full bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-lg text-sm font-medium transition-colors">
+                    상세 정보 보기
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* 등산 기본 준비물 안내 */}
+          <div className="mt-12 bg-gray-800 rounded-xl p-6">
+            <h3 className="text-xl font-bold text-white mb-4">등산 기본 준비물</h3>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div>
+                <h4 className="font-semibold text-blue-400 mb-2">필수 장비</h4>
+                <ul className="text-sm text-gray-300 space-y-1">
+                  <li>• 등산화, 스틱, 방풍/방한복</li>
+                  <li>• 식수와 간식</li>
+                  <li>• 헤드랜턴(장시간 산행)</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold text-blue-400 mb-2">기타 준비물</h4>
+                <ul className="text-sm text-gray-300 space-y-1">
+                  <li>• 구급약, 비상식량</li>
+                  <li>• 지도/앱</li>
+                  <li>• 쓰레기봉투</li>
+                </ul>
               </div>
             </div>
-          ))}
+          </div>
         </div>
       </main>
 
