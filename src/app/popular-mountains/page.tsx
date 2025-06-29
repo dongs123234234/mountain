@@ -1,12 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Link from "next/link";
 
 export default function PopularMountains() {
   const [selectedDifficulty, setSelectedDifficulty] = useState("전체");
+  const [searchTerm, setSearchTerm] = useState("");
+  const searchParams = useSearchParams();
+
+  // URL 파라미터에서 검색어 읽어오기
+  useEffect(() => {
+    const searchQuery = searchParams.get('search');
+    if (searchQuery) {
+      setSearchTerm(decodeURIComponent(searchQuery));
+    }
+  }, [searchParams]);
 
   const mountains = [
     {
@@ -403,9 +414,15 @@ export default function PopularMountains() {
 
   const difficulties = ["전체", "하", "하~중", "중", "중~상", "상"];
 
-  const filteredMountains = selectedDifficulty === "전체" 
-    ? mountains 
-    : mountains.filter(mountain => mountain.difficulty === selectedDifficulty);
+  const filteredMountains = mountains.filter(mountain => {
+    const matchesDifficulty = selectedDifficulty === "전체" || mountain.difficulty === selectedDifficulty;
+    const matchesSearch = searchTerm === "" || 
+      mountain.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      mountain.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      mountain.features.toLowerCase().includes(searchTerm.toLowerCase());
+    
+    return matchesDifficulty && matchesSearch;
+  });
 
   const getDifficultyColor = (difficulty: string) => {
     switch(difficulty) {
@@ -418,6 +435,23 @@ export default function PopularMountains() {
     }
   };
 
+  const highlightSearchTerm = (text: string, searchTerm: string) => {
+    if (!searchTerm) return text;
+    
+    const regex = new RegExp(`(${searchTerm})`, 'gi');
+    const parts = text.split(regex);
+    
+    return parts.map((part, index) => 
+      regex.test(part) ? (
+        <span key={index} className="bg-yellow-400 text-black px-1 rounded">
+          {part}
+        </span>
+      ) : (
+        part
+      )
+    );
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-gray-900">
       <Header />
@@ -428,6 +462,34 @@ export default function PopularMountains() {
           <div className="mb-6">
             <h1 className="text-2xl font-bold text-white mb-2">인기 산 정보</h1>
             <p className="text-gray-300">대한민국 주요 산 30곳의 상세 정보를 확인하세요</p>
+          </div>
+
+          {/* 검색창 */}
+          <div className="mb-6">
+            <div className="relative max-w-md">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg className="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </div>
+              <input
+                type="text"
+                placeholder="산 이름, 지역, 특징으로 검색..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="block w-full pl-10 pr-3 py-2 border border-gray-600 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
+              {searchTerm && (
+                <button
+                  onClick={() => setSearchTerm("")}
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                >
+                  <svg className="h-5 w-5 text-gray-400 hover:text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              )}
+            </div>
           </div>
 
           {/* 난이도 필터 */}
@@ -450,9 +512,19 @@ export default function PopularMountains() {
             </div>
           </div>
 
+          {/* 검색 결과 표시 */}
+          {searchTerm && (
+            <div className="mb-4">
+              <p className="text-gray-300">
+                <span className="font-semibold text-blue-400">'{searchTerm}'</span> 검색 결과: {filteredMountains.length}개
+              </p>
+            </div>
+          )}
+
           {/* 산 목록 */}
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {filteredMountains.map((mountain) => (
+          {filteredMountains.length > 0 ? (
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {filteredMountains.map((mountain) => (
               <div key={mountain.id} className="bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
                 {/* 산 이미지 */}
                 <div className="h-48 relative overflow-hidden">
@@ -480,8 +552,12 @@ export default function PopularMountains() {
                 <div className="p-5">
                   {/* 산 기본 정보 */}
                   <div className="mb-4">
-                    <h3 className="text-xl font-bold text-white mb-1">{mountain.name}</h3>
-                    <p className="text-sm text-gray-300 mb-1">{mountain.location}</p>
+                    <h3 className="text-xl font-bold text-white mb-1">
+                      {highlightSearchTerm(mountain.name, searchTerm)}
+                    </h3>
+                    <p className="text-sm text-gray-300 mb-1">
+                      {highlightSearchTerm(mountain.location, searchTerm)}
+                    </p>
                     <p className="text-lg font-semibold text-blue-400">{mountain.height}</p>
                   </div>
 
@@ -530,6 +606,28 @@ export default function PopularMountains() {
               </div>
             ))}
           </div>
+          ) : (
+            <div className="text-center py-12">
+              <div className="flex flex-col items-center">
+                <svg className="h-16 w-16 text-gray-400 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.44.993-5.936 2.578L3 21l8.64-8.64a7.956 7.956 0 00-2.304-5.532L12 4.172l2.664 2.663A7.956 7.956 0 0012.36 12.36L21 21l-3.064-3.063A7.962 7.962 0 0112 15z" />
+                </svg>
+                <h3 className="text-lg font-semibold text-gray-300 mb-2">검색 결과가 없습니다</h3>
+                <p className="text-gray-400 mb-4">
+                  {searchTerm ? `'${searchTerm}'에 해당하는 산을 찾을 수 없습니다` : '해당 조건에 맞는 산을 찾을 수 없습니다'}
+                </p>
+                <button
+                  onClick={() => {
+                    setSearchTerm("");
+                    setSelectedDifficulty("전체");
+                  }}
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                >
+                  전체 목록 보기
+                </button>
+              </div>
+            </div>
+          )}
 
           {/* 등산 기본 준비물 안내 */}
           <div className="mt-12 bg-gray-800 rounded-xl p-6">

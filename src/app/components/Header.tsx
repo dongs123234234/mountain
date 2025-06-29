@@ -67,6 +67,12 @@ const Header = () => {
             >
               MY TEAM
             </Link>
+            <Link 
+              href="/community" 
+              className={`font-medium ${isActive('/community') ? 'text-blue-400' : 'text-gray-300 hover:text-white'}`}
+            >
+              커뮤니티
+            </Link>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -147,6 +153,17 @@ const Header = () => {
                 }`}
               >
                 MY TEAM
+              </Link>
+              <Link 
+                href="/community" 
+                onClick={closeMobileMenu}
+                className={`font-medium py-2 px-3 rounded-md transition-colors ${
+                  isActive('/community') 
+                    ? 'text-blue-400 bg-gray-800' 
+                    : 'text-gray-300 hover:text-white hover:bg-gray-800'
+                }`}
+              >
+                커뮤니티
               </Link>
             </nav>
           </div>

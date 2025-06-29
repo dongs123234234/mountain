@@ -2,12 +2,15 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 export default function Home() {
   // 캐러셀 상태 관리
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [searchTerm, setSearchTerm] = useState("");
+  const router = useRouter();
   
   // 산 데이터
   const mountains = [
@@ -15,19 +18,22 @@ export default function Home() {
       name: "북한산",
       location: "서울 은평구",
       height: "836.5m",
-      gradient: "from-green-400 to-green-600"
+      gradient: "from-green-400 to-green-600",
+      image: "/images/mountains/bukhan.jpg"
     },
     {
       name: "설악산", 
       location: "강원 속초시",
       height: "1,708m",
-      gradient: "from-blue-400 to-blue-600"
+      gradient: "from-blue-400 to-blue-600",
+      image: "/images/mountains/seorak.jpg"
     },
     {
       name: "관악산",
       location: "경기 과천시", 
       height: "632m",
-      gradient: "from-purple-400 to-purple-600"
+      gradient: "from-purple-400 to-purple-600",
+      image: "/images/mountains/gwanak.jpg"
     }
   ];
 
@@ -39,6 +45,14 @@ export default function Home() {
   // 이전 슬라이드로 이동
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + mountains.length) % mountains.length);
+  };
+
+  // 검색 기능
+  const handleSearch = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    if (searchTerm.trim()) {
+      router.push(`/popular-mountains?search=${encodeURIComponent(searchTerm.trim())}`);
+    }
   };
 
   return (
@@ -56,18 +70,23 @@ export default function Home() {
               
               {/* Search Bar */}
               <div className="max-w-md mx-auto">
-                <div className="relative">
+                <form onSubmit={handleSearch} className="relative">
                   <input 
                     type="text" 
                     placeholder="산 이름 또는 지역을 검색하세요"
                     className="w-full px-4 py-3 pr-12 text-white bg-gray-800 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
                   />
-                  <button className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                  <button 
+                    type="submit"
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-300 transition-colors"
+                  >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                     </svg>
                   </button>
-                </div>
+                </form>
               </div>
             </div>
           </div>
@@ -116,7 +135,13 @@ export default function Home() {
                     <div key={index} className="w-full flex-shrink-0">
                       <div className="max-w-md mx-auto">
                         <div className="bg-gray-800 rounded-lg overflow-hidden">
-                          <div className={`h-64 bg-gradient-to-br ${mountain.gradient}`}></div>
+                          <div className="h-64 relative">
+                            <img 
+                              src={mountain.image} 
+                              alt={mountain.name}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
                           <div className="p-6 text-center">
                             <h4 className="text-xl font-medium text-white mb-2">{mountain.name}</h4>
                             <p className="text-gray-300 mb-1">{mountain.location}</p>
