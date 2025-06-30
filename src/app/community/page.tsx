@@ -141,31 +141,53 @@ const CommunityPage = () => {
           </div>
 
           {/* 통계 섹션 */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-            <div className="bg-gray-800 p-6 rounded-lg text-center">
-              <div className="text-3xl font-bold text-blue-400 mb-2">{stats.totalPosts}</div>
-              <div className="text-gray-300">총 게시글</div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 mb-8">
+            <div className="bg-gray-800 p-4 md:p-6 rounded-lg text-center">
+              <div className="text-2xl md:text-3xl font-bold text-blue-400 mb-1 md:mb-2">{stats.totalPosts}</div>
+              <div className="text-xs md:text-sm text-gray-300">총 게시글</div>
             </div>
-            <div className="bg-gray-800 p-6 rounded-lg text-center">
-              <div className="text-3xl font-bold text-green-400 mb-2">{stats.totalLikes}</div>
-              <div className="text-gray-300">총 좋아요</div>
+            <div className="bg-gray-800 p-4 md:p-6 rounded-lg text-center">
+              <div className="text-2xl md:text-3xl font-bold text-green-400 mb-1 md:mb-2">{stats.totalLikes}</div>
+              <div className="text-xs md:text-sm text-gray-300">총 좋아요</div>
             </div>
-            <div className="bg-gray-800 p-6 rounded-lg text-center">
-              <div className="text-3xl font-bold text-purple-400 mb-2">{stats.totalComments}</div>
-              <div className="text-gray-300">총 댓글</div>
+            <div className="bg-gray-800 p-4 md:p-6 rounded-lg text-center">
+              <div className="text-2xl md:text-3xl font-bold text-purple-400 mb-1 md:mb-2">{stats.totalComments}</div>
+              <div className="text-xs md:text-sm text-gray-300">총 댓글</div>
             </div>
-            <div className="bg-gray-800 p-6 rounded-lg text-center">
-              <div className="text-3xl font-bold text-yellow-400 mb-2">{stats.newPosts}</div>
-              <div className="text-gray-300">새 게시글</div>
+            <div className="bg-gray-800 p-4 md:p-6 rounded-lg text-center">
+              <div className="text-2xl md:text-3xl font-bold text-yellow-400 mb-1 md:mb-2">{stats.newPosts}</div>
+              <div className="text-xs md:text-sm text-gray-300">새 게시글</div>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          <div className="lg:grid lg:grid-cols-4 lg:gap-8 space-y-4 lg:space-y-0">
             {/* 카테고리 사이드바 */}
             <div className="lg:col-span-1">
-              <div className="bg-gray-800 p-6 rounded-lg mb-6">
-                <h3 className="text-lg font-semibold text-white mb-4">카테고리</h3>
-                <div className="space-y-2">
+              <div className="bg-gray-800 p-4 lg:p-6 rounded-lg mb-6">
+                <h3 className="text-lg font-semibold text-white mb-4 hidden lg:block">카테고리</h3>
+                
+                {/* 모바일: 가로 스크롤 카테고리 */}
+                <div className="lg:hidden">
+                  <div className="flex space-x-2 overflow-x-auto pb-2 scrollbar-hide">
+                    {categories.map((category) => (
+                      <button
+                        key={category.id}
+                        onClick={() => setSelectedCategory(category.id)}
+                        className={`flex-shrink-0 flex items-center px-3 py-2 rounded-lg transition-colors text-sm ${
+                          selectedCategory === category.id
+                            ? 'bg-blue-600 text-white'
+                            : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                        }`}
+                      >
+                        <span className="mr-2">{category.icon}</span>
+                        <span className="whitespace-nowrap">{category.name}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* 데스크톱: 세로 배치 카테고리 */}
+                <div className="hidden lg:block space-y-2">
                   {categories.map((category) => (
                     <button
                       key={category.id}
@@ -183,7 +205,7 @@ const CommunityPage = () => {
                 </div>
               </div>
 
-              <div className="bg-gray-800 p-6 rounded-lg">
+              <div className="hidden lg:block bg-gray-800 p-6 rounded-lg">
                 <h3 className="text-lg font-semibold text-white mb-4">커뮤니티 규칙</h3>
                 <ul className="text-sm text-gray-300 space-y-2">
                   <li>• 서로 존중하며 소통해주세요</li>

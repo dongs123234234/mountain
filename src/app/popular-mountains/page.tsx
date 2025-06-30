@@ -9,7 +9,22 @@ import Link from "next/link";
 export default function PopularMountains() {
   const [selectedDifficulty, setSelectedDifficulty] = useState("전체");
   const [searchTerm, setSearchTerm] = useState("");
+  const [isMobile, setIsMobile] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
   const searchParams = useSearchParams();
+
+  // 화면 크기 감지
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
 
   // URL 파라미터에서 검색어 읽어오기
   useEffect(() => {
@@ -18,6 +33,11 @@ export default function PopularMountains() {
       setSearchTerm(decodeURIComponent(searchQuery));
     }
   }, [searchParams]);
+
+  // 슬라이드 변경 시 currentSlide 초기화
+  useEffect(() => {
+    setCurrentSlide(0);
+  }, [selectedDifficulty, searchTerm]);
 
   const mountains = [
     {
@@ -424,6 +444,47 @@ export default function PopularMountains() {
     return matchesDifficulty && matchesSearch;
   });
 
+  // 슬라이드 관련 함수들
+  const nextSlide = () => {
+    setCurrentSlide((prev) => 
+      prev === filteredMountains.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => 
+      prev === 0 ? filteredMountains.length - 1 : prev - 1
+    );
+  };
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+  };
+
+  // 터치 이벤트 핸들러
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe && filteredMountains.length > 0) {
+      nextSlide();
+    }
+    if (isRightSwipe && filteredMountains.length > 0) {
+      prevSlide();
+    }
+  };
+
   const getDifficultyColor = (difficulty: string) => {
     switch(difficulty) {
       case "하": return "text-green-400";
@@ -523,89 +584,234 @@ export default function PopularMountains() {
 
           {/* 산 목록 */}
           {filteredMountains.length > 0 ? (
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {filteredMountains.map((mountain) => (
-              <div key={mountain.id} className="bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                {/* 산 이미지 */}
-                <div className="h-48 relative overflow-hidden">
-                  <img 
-                    src={mountain.image} 
-                    alt={`${mountain.name} 풍경`}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                    onLoad={(e) => {
-                      console.log(`이미지 로드 성공: ${mountain.name}`);
-                    }}
-                    onError={(e) => {
-                      console.log(`이미지 로드 실패: ${mountain.name} - ${mountain.image}`);
-                      // 이미지 로드 실패 시 그라데이션 배경으로 폴백
-                      const container = e.currentTarget.parentElement!;
-                      e.currentTarget.style.display = 'none';
-                      container.classList.add('bg-gradient-to-br');
-                      container.classList.add(...mountain.gradient.split(' '));
-                    }}
-                  />
-                  <div className={`absolute top-3 right-3 px-2 py-1 rounded-full text-xs font-semibold ${getDifficultyColor(mountain.difficulty)} bg-black bg-opacity-50`}>
-                    {mountain.difficulty}
+            isMobile ? (
+              /* 모바일 슬라이드 뷰 */
+              <div className="relative">
+                <div 
+                  className="overflow-hidden"
+                  onTouchStart={handleTouchStart}
+                  onTouchMove={handleTouchMove}
+                  onTouchEnd={handleTouchEnd}
+                >
+                  <div 
+                    className="flex transition-transform duration-300 ease-in-out"
+                    style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                  >
+                    {filteredMountains.map((mountain) => (
+                      <div key={mountain.id} className="w-full flex-shrink-0 px-4">
+                        <div className="bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+                          {/* 산 이미지 */}
+                          <div className="h-64 relative overflow-hidden">
+                            <img 
+                              src={mountain.image} 
+                              alt={`${mountain.name} 풍경`}
+                              className="w-full h-full object-cover"
+                              onLoad={(e) => {
+                                console.log(`이미지 로드 성공: ${mountain.name}`);
+                              }}
+                              onError={(e) => {
+                                console.log(`이미지 로드 실패: ${mountain.name} - ${mountain.image}`);
+                                const container = e.currentTarget.parentElement!;
+                                e.currentTarget.style.display = 'none';
+                                container.classList.add('bg-gradient-to-br');
+                                container.classList.add(...mountain.gradient.split(' '));
+                              }}
+                            />
+                            <div className={`absolute top-3 right-3 px-3 py-1 rounded-full text-sm font-semibold ${getDifficultyColor(mountain.difficulty)} bg-black bg-opacity-70`}>
+                              {mountain.difficulty}
+                            </div>
+                          </div>
+
+                          <div className="p-6">
+                            {/* 산 기본 정보 */}
+                            <div className="mb-4">
+                              <h3 className="text-2xl font-bold text-white mb-2">
+                                {highlightSearchTerm(mountain.name, searchTerm)}
+                              </h3>
+                              <p className="text-sm text-gray-300 mb-2">
+                                {highlightSearchTerm(mountain.location, searchTerm)}
+                              </p>
+                              <p className="text-xl font-semibold text-blue-400">{mountain.height}</p>
+                            </div>
+
+                            {/* 특징 */}
+                            <div className="mb-4">
+                              <p className="text-sm text-gray-300 leading-relaxed">{mountain.features}</p>
+                            </div>
+
+                            {/* 소요시간 */}
+                            <div className="mb-4">
+                              <div className="flex items-center space-x-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span className="text-sm text-gray-400">{mountain.duration}</span>
+                              </div>
+                            </div>
+
+                            {/* 준비물 */}
+                            <div className="mb-4">
+                              <div className="flex items-start space-x-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                                </svg>
+                                <span className="text-sm text-gray-400 leading-relaxed">{mountain.equipment}</span>
+                              </div>
+                            </div>
+
+                            {/* 입산 제한 정보 */}
+                            {mountain.restrictions && (
+                              <div className="mb-4">
+                                <div className="flex items-start space-x-2">
+                                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-yellow-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.464 0L4.35 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                                  </svg>
+                                  <span className="text-sm text-yellow-400 leading-relaxed">{mountain.restrictions}</span>
+                                </div>
+                              </div>
+                            )}
+
+                            {/* 상세 정보 버튼 */}
+                            <button className="w-full bg-gray-700 hover:bg-gray-600 text-white py-3 px-4 rounded-lg text-sm font-medium transition-colors">
+                              상세 정보 보기
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
-                <div className="p-5">
-                  {/* 산 기본 정보 */}
-                  <div className="mb-4">
-                    <h3 className="text-xl font-bold text-white mb-1">
-                      {highlightSearchTerm(mountain.name, searchTerm)}
-                    </h3>
-                    <p className="text-sm text-gray-300 mb-1">
-                      {highlightSearchTerm(mountain.location, searchTerm)}
-                    </p>
-                    <p className="text-lg font-semibold text-blue-400">{mountain.height}</p>
-                  </div>
-
-                  {/* 특징 */}
-                  <div className="mb-3">
-                    <p className="text-sm text-gray-300 leading-relaxed">{mountain.features}</p>
-                  </div>
-
-                  {/* 소요시간 */}
-                  <div className="mb-3">
-                    <div className="flex items-center space-x-2">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                {/* 슬라이드 네비게이션 버튼 */}
+                {filteredMountains.length > 1 && (
+                  <>
+                    <button
+                      onClick={prevSlide}
+                      className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-70 transition-opacity"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
                       </svg>
-                      <span className="text-xs text-gray-400">{mountain.duration}</span>
-                    </div>
-                  </div>
-
-                  {/* 준비물 */}
-                  <div className="mb-4">
-                    <div className="flex items-start space-x-2">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </button>
+                    <button
+                      onClick={nextSlide}
+                      className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-70 transition-opacity"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
                       </svg>
-                      <span className="text-xs text-gray-400 leading-relaxed">{mountain.equipment}</span>
-                    </div>
+                    </button>
+                  </>
+                )}
+
+                {/* 슬라이드 인디케이터 */}
+                {filteredMountains.length > 1 && (
+                  <div className="flex justify-center mt-6 space-x-2">
+                    {filteredMountains.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => goToSlide(index)}
+                        className={`w-2 h-2 rounded-full transition-colors ${
+                          index === currentSlide ? 'bg-blue-400' : 'bg-gray-600'
+                        }`}
+                      />
+                    ))}
                   </div>
+                )}
 
-                  {/* 입산 제한 정보 */}
-                  {mountain.restrictions && (
-                    <div className="mb-4">
-                      <div className="flex items-start space-x-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-yellow-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.464 0L4.35 16.5c-.77.833.192 2.5 1.732 2.5z" />
-                        </svg>
-                        <span className="text-xs text-yellow-400 leading-relaxed">{mountain.restrictions}</span>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* 상세 정보 버튼 */}
-                  <button className="w-full bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-lg text-sm font-medium transition-colors">
-                    상세 정보 보기
-                  </button>
+                {/* 슬라이드 카운터 */}
+                <div className="text-center mt-4">
+                  <span className="text-gray-400 text-sm">
+                    {currentSlide + 1} / {filteredMountains.length}
+                  </span>
                 </div>
               </div>
-            ))}
-          </div>
+            ) : (
+              /* 데스크톱 그리드 뷰 */
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {filteredMountains.map((mountain) => (
+                <div key={mountain.id} className="bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                  {/* 산 이미지 */}
+                  <div className="h-48 relative overflow-hidden">
+                    <img 
+                      src={mountain.image} 
+                      alt={`${mountain.name} 풍경`}
+                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                      onLoad={(e) => {
+                        console.log(`이미지 로드 성공: ${mountain.name}`);
+                      }}
+                      onError={(e) => {
+                        console.log(`이미지 로드 실패: ${mountain.name} - ${mountain.image}`);
+                        // 이미지 로드 실패 시 그라데이션 배경으로 폴백
+                        const container = e.currentTarget.parentElement!;
+                        e.currentTarget.style.display = 'none';
+                        container.classList.add('bg-gradient-to-br');
+                        container.classList.add(...mountain.gradient.split(' '));
+                      }}
+                    />
+                    <div className={`absolute top-3 right-3 px-2 py-1 rounded-full text-xs font-semibold ${getDifficultyColor(mountain.difficulty)} bg-black bg-opacity-50`}>
+                      {mountain.difficulty}
+                    </div>
+                  </div>
+
+                  <div className="p-5">
+                    {/* 산 기본 정보 */}
+                    <div className="mb-4">
+                      <h3 className="text-xl font-bold text-white mb-1">
+                        {highlightSearchTerm(mountain.name, searchTerm)}
+                      </h3>
+                      <p className="text-sm text-gray-300 mb-1">
+                        {highlightSearchTerm(mountain.location, searchTerm)}
+                      </p>
+                      <p className="text-lg font-semibold text-blue-400">{mountain.height}</p>
+                    </div>
+
+                    {/* 특징 */}
+                    <div className="mb-3">
+                      <p className="text-sm text-gray-300 leading-relaxed">{mountain.features}</p>
+                    </div>
+
+                    {/* 소요시간 */}
+                    <div className="mb-3">
+                      <div className="flex items-center space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span className="text-xs text-gray-400">{mountain.duration}</span>
+                      </div>
+                    </div>
+
+                    {/* 준비물 */}
+                    <div className="mb-4">
+                      <div className="flex items-start space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                        </svg>
+                        <span className="text-xs text-gray-400 leading-relaxed">{mountain.equipment}</span>
+                      </div>
+                    </div>
+
+                    {/* 입산 제한 정보 */}
+                    {mountain.restrictions && (
+                      <div className="mb-4">
+                        <div className="flex items-start space-x-2">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-yellow-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.464 0L4.35 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                          </svg>
+                          <span className="text-xs text-yellow-400 leading-relaxed">{mountain.restrictions}</span>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* 상세 정보 버튼 */}
+                    <button className="w-full bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-lg text-sm font-medium transition-colors">
+                      상세 정보 보기
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+            )
           ) : (
             <div className="text-center py-12">
               <div className="flex flex-col items-center">
